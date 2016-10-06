@@ -65,34 +65,40 @@ void lpm_exit_stopmode(void)
 
 #if !SERIALLPM /* Recover from STOP when not using USB serial connection */
 
-  /* Disable IRQ while the MCU is not running on HSE */
-  __disable_irq();
+  // Disable IRQ while the MCU is not running on HSE
+  __disable_irq( );
 
+  /* After wake-up from STOP reconfigure the system clock */
   /* Enable HSE */
-  RCC_HSEConfig(RCC_HSE_ON);
+  RCC_HSEConfig( RCC_HSE_ON );
 
   /* Wait till HSE is ready */
-  while (RCC_GetFlagStatus(RCC_FLAG_HSERDY) == RESET){}
+  while( RCC_GetFlagStatus( RCC_FLAG_HSERDY ) == RESET )
+  {}
 
   /* Enable PLL */
-  RCC_PLLCmd(ENABLE);
+  RCC_PLLCmd( ENABLE );
 
   /* Wait till PLL is ready */
-  while (RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET){}
+  while( RCC_GetFlagStatus( RCC_FLAG_PLLRDY ) == RESET )
+  {}
 
   /* Select PLL as system clock source */
-  RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
+  RCC_SYSCLKConfig( RCC_SYSCLKSource_PLLCLK );
 
   /* Wait till PLL is used as system clock source */
-  while (RCC_GetSYSCLKSource() != 0x0C){}
+  while( RCC_GetSYSCLKSource( ) != 0x0C )
+  {}
 
   /* Set MCU in ULP (Ultra Low Power) */
-  PWR_UltraLowPowerCmd(DISABLE); // add up to 3ms wakeup time
+  PWR_UltraLowPowerCmd( DISABLE ); // add up to 3ms wakeup time
 
   /* Enable the Power Voltage Detector */
-  PWR_PVDCmd(ENABLE);
+  PWR_PVDCmd( ENABLE );
 
-  __enable_irq();
+  BoardInitMcu_Contiki( );
+
+  __enable_irq( );
 #endif
 
   stopModeActivated = 0;

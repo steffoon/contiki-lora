@@ -38,6 +38,7 @@
  */
 
 #include "contiki.h"
+#include "sys/etimer.h"
 
 #include <stdio.h> /* For printf() */
 /*---------------------------------------------------------------------------*/
@@ -46,10 +47,19 @@ AUTOSTART_PROCESSES(&hello_world_process);
 /*---------------------------------------------------------------------------*/
 PROCESS_THREAD(hello_world_process, ev, data)
 {
+   static struct etimer et;
   PROCESS_BEGIN();
 
-  printf("Hello, world\n");
-  
+   /* Delay 1 second */
+   etimer_set(&et, CLOCK_SECOND);
+
+   while(1)
+   {
+     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+     /* Reset the etimer to trig again in 1 second */
+     etimer_reset(&et);
+     printf("Hello, world\n");
+   }
   PROCESS_END();
 }
 /*---------------------------------------------------------------------------*/

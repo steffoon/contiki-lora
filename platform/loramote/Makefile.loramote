@@ -1,6 +1,6 @@
 # User settings -----------------------------------------------------------
 
-SERIALLPM = 1			# Should be enabled for reliable I/O over USB (reduced LPM)
+SERIALLPM = 1			# Should be enabled for reliable I/O over USB (LPM sleep instead of STOP)
 VERBOSE = 0		# Verbosity control
 SMALL = 1		# Create small binaries
 REDIRECT_STDIO ?= 1	# Redirect standard I/O to USART/USB
