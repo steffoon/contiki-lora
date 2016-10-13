@@ -80,7 +80,7 @@ contiki-cc2530dk.lib
 *.dsc
 
 #cc65 build artifacts
-*.s
+#*.s  #Required for ARM assembly. STM32 start script
 *.eth
 *.dsk
 *.po
