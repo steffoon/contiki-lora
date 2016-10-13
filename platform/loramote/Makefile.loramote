@@ -100,6 +100,13 @@ flash-init:
 	$(Q)$(MAKE) flash $(@:.flash=.flash.bin)
 
 
+%.flashbl: LDSCRIPT = stm32l1xx_md_flash_offset.ld
+%.flashbl: CFLAGS += -DUSE_BOOTLOADER
+%.flashbl: | flash-init %.bin
+	$(Q)mv $(@:.flashbl=.$(TARGET)) $(@:.flashlbl=.flashbl.$(TARGET))
+	$(Q)cp $(@:.flashbl=.bin) $(@:.flashbl=.flashbl.bin)
+	$(Q)$(MAKE) bootloader-flash $(@:.flashbl=.flashbl.bin)
+
 # Compile DFU-uploadable binary
 upload-init:
 	$(Q)[ -f latest_build_flash~ ] && rm -f ./obj_loramote/lora-contiki-interface.o || :	# Make sure that the previously built flash object is not used
@@ -120,7 +127,7 @@ erase-flash:
 
 # Install bootloader
 install-bootloader:
-	$(Q)$(MAKE) erase-flash
+#	$(Q)$(MAKE) erase-flash
 	$(Q)$(STLINK)/st-flash --reset write $(LORA_TOOLS)/loramote-bootloader/loramote_bootloader.bin 0x8000000
 
 # Flash executable code to loramote
@@ -129,7 +136,7 @@ flash:
 
 # Flash executable code to loramote, when a bootloader is present
 bootloader-flash:
-	$(Q)$(STLINK)/st-flash --reset write $(filter $(wildcard *.dfu.bin),$(MAKECMDGOALS)) 0x8003000
+	$(Q)$(STLINK)/st-flash --reset write $(filter $(wildcard *.flashbl.bin),$(MAKECMDGOALS)) 0x8003000
 
 # Upload executable code to loramote
 upload:
