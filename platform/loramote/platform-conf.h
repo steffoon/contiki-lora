@@ -35,8 +35,16 @@
 /*---------------------------------------------------------------------------*/
 #include <inttypes.h>
 #include <string.h>
+
+#define AUTOSTART_ENABLE 		1
+#define USE_MODEM_LORA			1
+#define USE_BAND_868			1
+#define PROJECT_CONF_H "project-conf.h"
+
 #include "lora-radio-arch-config.h"
 /*---------------------------------------------------------------------------*/
+
+
 
 #define PLATFORM_HAS_LEDS		1
 #define PLATFORM_HAS_RADIO		1

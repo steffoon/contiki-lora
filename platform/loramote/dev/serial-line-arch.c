@@ -48,8 +48,8 @@ void serial_line_arch_input_callback(UartNotifyId_t id){
   watchdog_periodic();
   if(id == UART_NOTIFY_RX){
     uint8_t ch = 0;
-    while(UartGetChar(&UartUsb, &ch));
-    serial_line_input_byte(ch);
+    while(UartGetChar(&UartUsb, &ch) == 0)
+    	serial_line_input_byte(ch);
   }
 }
 /*---------------------------------------------------------------------------*/

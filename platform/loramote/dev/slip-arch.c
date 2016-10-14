@@ -39,8 +39,8 @@ void slip_arch_input_callback(UartNotifyId_t id){
   watchdog_periodic();
   if(id == UART_NOTIFY_RX){
     uint8_t ch = 0;
-    while(UartGetChar(&UartUsb, &ch));
-    slip_input_byte(ch);
+    while(UartGetChar(&UartUsb, &ch) == 0)
+    	slip_input_byte(ch);
   }
 }
 /*---------------------------------------------------------------------------*/
