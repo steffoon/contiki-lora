@@ -45,7 +45,6 @@
 /*---------------------------------------------------------------------------*/
 
 
-
 #define PLATFORM_HAS_LEDS		1
 #define PLATFORM_HAS_RADIO		1
 #define PLATFORM_HAS_BUTTON		1
@@ -67,14 +66,13 @@
 #define MCU_WAKE_UP_TIME		3400			// Time in microseconds to wake up from low power mode
 
 
-#define REDIRECT_STDIO_STRINGMODE	1
+#define REDIRECT_STDIO_STRINGMODE		1
 #define UART1_CONF_TX_WITH_INTERRUPT	0
-#define WITH_SERIAL_LINE_INPUT		1
-#define ENERGEST_CONF_ON		0
-#define TELNETD_CONF_NUMLINES		6
+#define WITH_SERIAL_LINE_INPUT			1
+#define ENERGEST_CONF_ON				0
+#define TELNETD_CONF_NUMLINES			6
 #define NETSTACK_CONF_RADIO		lora_radio_driver
 #define NETSTACK_RADIO_MAX_PAYLOAD_LEN	LORA_MAX_PAYLOAD_SIZE
-
 
 /* Define ticks/second for slow and fast clocks. Notice that these should be a power
    of two, eg 64,128,256,512 etc, for efficiency as PoT's can be optimized well */
@@ -96,6 +94,8 @@ typedef unsigned long long rtimer_clock_t;
 
 #define CCIF
 #define CLIF
+
+#define SLIP_BRIDGE_CONF_NO_PUTCHAR 1  /* A custom SLIP printf handler is provided */
 
 
 /* These names are deprecated, use C99 names */

@@ -55,6 +55,8 @@ int main(int argc, char **argv)
   leds_init();
   rtimer_init();
   serial_line_arch_init();
+
+  Delay(5); /* Avoids driver issues in virtual environments. */
   printf("\nInitializing hardware... Done!\n");
 
 
@@ -124,7 +126,7 @@ int main(int argc, char **argv)
       ENERGEST_OFF(ENERGEST_TYPE_CPU);
       ENERGEST_ON(ENERGEST_TYPE_LPM);
       watchdog_stop();
-      lpm_enter_stopmode();			// Enter LPM: Stop mode with RTC
+      //lpm_enter_stopmode();			// Enter LPM: Stop mode with RTC
       watchdog_start();
       ENERGEST_OFF(ENERGEST_TYPE_LPM);
       ENERGEST_ON(ENERGEST_TYPE_CPU);

@@ -39,6 +39,7 @@
   #define PUTSTRING_PROTOTYPE int __io_putstring(const unsigned char *buffer, int size)
   #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
+  #define PUTSTRING_PROTOTYPE int fputs(const char *buffer, FILE * f)
   #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE * f)
 #endif /* __GNUC__ */
 /*---------------------------------------------------------------------------*/
