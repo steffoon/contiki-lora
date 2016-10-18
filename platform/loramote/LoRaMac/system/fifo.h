@@ -77,4 +77,11 @@ bool IsFifoEmpty( Fifo_t *fifo );
  */
 bool IsFifoFull( Fifo_t *fifo );
 
+/*!
+ * Returns the amount of objects in buffer
+ *
+ * \param [IN] fifo   Pointer to the FIFO object
+ * \retval size       Objects in FIFO
+ */
+uint16_t FifoSize( Fifo_t *fifo );
 #endif // __FIFO_H__
