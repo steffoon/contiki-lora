@@ -34,7 +34,7 @@
 #include "lora-contiki-interface.h"
 /*---------------------------------------------------------------------------*/
 extern bool Virtual_ComPort_IsOpen(void);
-int _slip_active = 0;
+extern int _slip_active;
 /*---------------------------------------------------------------------------*/
 void slip_arch_input_callback(UartNotifyId_t id){
   watchdog_periodic();

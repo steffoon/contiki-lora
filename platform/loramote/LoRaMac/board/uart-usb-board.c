@@ -40,12 +40,12 @@ volatile  uint8_t UsbTxBuffer[VIRTUAL_COM_PORT_DATA_SIZE];
 volatile  uint8_t UsbRxBuffer[VIRTUAL_COM_PORT_DATA_SIZE];
 
 typedef enum{
-	UsbPutBuffer,
-	EP_IN_Callback
+	NORMAL_CALL,
+	TIMER_CALLBACK
 } TransmitType;
 
-const TransmitType putBuffer = UsbPutBuffer;
-const TransmitType EP_callback = EP_IN_Callback;
+const TransmitType normalTXcall = NORMAL_CALL;
+const TransmitType timerTXcall = TIMER_CALLBACK;
 
 static struct ctimer UartUsbTimer;
 uint8_t UartUsbTimerOperational = 0;
@@ -67,28 +67,27 @@ void UartUsbDeInit( Uart_t *obj )
 
 }
 
-static void UartUsbTransmit(void *ptr)
+static void UartUsbTransmit(TransmitType t)
 {
-	//TransmitType t = (TransmitType)*ptr;
-	if( (TransmitType*)ptr == EP_IN_Callback && FifoSize(&UartUsb.FifoTx) < VIRTUAL_COM_PORT_DATA_SIZE) //Callback, check if not a full transmit buffer
-	{
-			return; //Not a full transmit, do not send from USB callback
+	//If Timer_callback -> Transmit if available
+	//Else if Normal call -> Start timer callback if buffer not full and no timer started
+	//					  -> Transmit if buffer full and available
+
+	if( t == TIMER_CALLBACK){
+			UartUsbTimerOperational = 0;
+			while(!UsbPacketTx); //Busy wait while previous USB transmission finishes
 	}
 
-	else if( (TransmitType*)ptr == UsbPutBuffer)
-    {
-    	if(UsbPacketTx == 0)
-    	{
-			// Already sending, reschedule ctimer
+	else if( t == NORMAL_CALL && FifoSize(&UartUsb.FifoTx) < VIRTUAL_COM_PORT_DATA_SIZE){
+		//USB TX buffer not full, start a timer callback if not already started
+		if(!UartUsbTimerOperational && FifoSize(&UartUsb.FifoTx))
+		{
 			UartUsbTimerOperational = 1;
-			ctimer_set(&UartUsbTimer, CLOCK_SECOND/50, UartUsbTransmit, &putBuffer);
-			return;
-    	}
-    	else
-    	{
-    		UartUsbTimerOperational = 0; //inactivate ctimer
-    	}
-    }
+			ctimer_set(&UartUsbTimer, CLOCK_SECOND/50, UartUsbTransmit, TIMER_CALLBACK);
+		}
+		return;
+	}
+
 
     UsbPacketTx = 0;
 
@@ -112,7 +111,6 @@ static void UartUsbTransmit(void *ptr)
 	SetEPTxCount( ENDP1, idx );
 	SetEPTxValid( ENDP1 );
 
-
 }
 
 
@@ -127,7 +125,7 @@ uint8_t UartUsbPutBuffer( Uart_t *obj, uint8_t *buffer, uint16_t size )
         }
         else //Buffer full, start transmitting immediately and try again
         {
-        	UartUsbTransmit(UsbPutBuffer);
+        	UartUsbTransmit(NORMAL_CALL);
 
         	while(IsFifoFull( &UartUsb.FifoTx ));
 
@@ -136,9 +134,7 @@ uint8_t UartUsbPutBuffer( Uart_t *obj, uint8_t *buffer, uint16_t size )
 
     }
 
-    if(!UartUsbTimerOperational) //Start timer if not already running
-    	ctimer_set(&UartUsbTimer, CLOCK_SECOND/50, UartUsbTransmit, &putBuffer);
-
+    UartUsbTransmit(NORMAL_CALL);
     return 0;
 
 
@@ -206,7 +202,7 @@ uint8_t UartUsbGetChar( Uart_t *obj, uint8_t *data )
 void EP1_IN_Callback (void)
 {
     UsbPacketTx = 1;
-	UartUsbTransmit(&EP_callback);
+	UartUsbTransmit(NORMAL_CALL);
 }
 
 void EP3_OUT_Callback(void)

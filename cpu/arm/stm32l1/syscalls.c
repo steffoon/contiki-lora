@@ -40,7 +40,7 @@ extern int errno;
 /*---------------------------------------------------------------------------*/
 extern int __io_putstring(const unsigned char *buffer, int size);
 extern int __io_putchar(int ch);
-extern int _slip_active;
+int _slip_active = 0;
 /*---------------------------------------------------------------------------*/
 #if defined(REDIRECT_STDIO)
 /*---------------------------------------------------------------------------*/

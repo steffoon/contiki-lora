@@ -46,12 +46,19 @@ static uip_ipaddr_t ipaddr;
 static void print_processes(struct process * const processes[]);
 static void print_device_config(void);
 static void set_rime_addr(void);
-extern bool Virtual_ComPort_IsOpen(void);
+//extern bool Virtual_ComPort_IsOpen(void);
 /*---------------------------------------------------------------------------*/
 int main(int argc, char **argv)
 {
   /* Initialize hardware */
   BoardInitMcu_Contiki();
+
+  clock_init();
+  watchdog_init();
+  process_init();
+  process_start(&etimer_process, NULL);
+  ctimer_init(); //Ctimer required for printf over usb!
+
   leds_init();
   rtimer_init();
   serial_line_arch_init();
@@ -62,11 +69,7 @@ int main(int argc, char **argv)
 
   /* Initialize Contiki */
   printf("Initializing Contiki... "); fflush(stdout);
-  clock_init();
-  watchdog_init();
-  process_init();
-  process_start(&etimer_process, NULL);
-  ctimer_init();
+
   serial_line_init();
   process_start(&sensors_process, NULL);
   printf("Done!\n");
