@@ -44,8 +44,6 @@ typedef enum{
 	TIMER_CALLBACK
 } TransmitType;
 
-const TransmitType normalTXcall = NORMAL_CALL;
-const TransmitType timerTXcall = TIMER_CALLBACK;
 
 static struct ctimer UartUsbTimer;
 uint8_t UartUsbTimerOperational = 0;
@@ -78,14 +76,24 @@ static void UartUsbTransmit(TransmitType t)
 			while(!UsbPacketTx); //Busy wait while previous USB transmission finishes
 	}
 
-	else if( t == NORMAL_CALL && FifoSize(&UartUsb.FifoTx) < VIRTUAL_COM_PORT_DATA_SIZE){
-		//USB TX buffer not full, start a timer callback if not already started
-		if(!UartUsbTimerOperational && FifoSize(&UartUsb.FifoTx))
+	else if( t == NORMAL_CALL)
+	{
+
+		if(FifoSize(&UartUsb.FifoTx) < VIRTUAL_COM_PORT_DATA_SIZE)
 		{
+			//USB TX buffer not full, start a timer callback if not already started
+			if(!UartUsbTimerOperational && FifoSize(&UartUsb.FifoTx))
+			{
+				UartUsbTimerOperational = 1;
+				ctimer_set(&UartUsbTimer, CLOCK_SECOND/50, UartUsbTransmit, TIMER_CALLBACK);
+			}
+			return;
+		}
+		else
+		{	//Full TX buffer, restart timer callback if not already started. Send a full USB packet afterwards
 			UartUsbTimerOperational = 1;
 			ctimer_set(&UartUsbTimer, CLOCK_SECOND/50, UartUsbTransmit, TIMER_CALLBACK);
 		}
-		return;
 	}
 
 

@@ -63,7 +63,7 @@ int main(int argc, char **argv)
   rtimer_init();
   serial_line_arch_init();
 
-  Delay(5); /* Avoids driver issues in virtual environments. */
+  Delay(10); /* Avoids driver issues in virtual environments. */
   printf("\nInitializing hardware... Done!\n");
 
 
