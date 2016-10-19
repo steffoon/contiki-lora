@@ -196,7 +196,6 @@ uint8_t UartUsbGetChar( Uart_t *obj, uint8_t *data )
     {
         return 2;
     }
-    SetEPRxValid( ENDP3 );
     if( IsFifoEmpty( &obj->FifoRx ) == false )
     {
         __disable_irq( );
@@ -229,6 +228,8 @@ void EP3_OUT_Callback(void)
             FifoPush( &UartUsb.FifoRx, UsbRxBuffer[i] );
         }
     }
+
+    SetEPRxValid( ENDP3 );
 
     if( UartUsb.IrqNotify != NULL )
     {
