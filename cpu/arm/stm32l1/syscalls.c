@@ -40,7 +40,7 @@ extern int errno;
 /*---------------------------------------------------------------------------*/
 extern int __io_putstring(const unsigned char *buffer, int size);
 extern int __io_putchar(int ch);
-int _slip_active = 0;
+//int _slip_active = 0;
 /*---------------------------------------------------------------------------*/
 #if defined(REDIRECT_STDIO)
 /*---------------------------------------------------------------------------*/
@@ -48,8 +48,9 @@ int _slip_active = 0;
    for output to all files, including stdout. Returns number of bytes sent */
 size_t _write(int handle, const unsigned char *buffer, size_t size)
 {
-	if(_slip_active)	//SLIP debug information
-	{
+#if USE_SLIP
+	//if(_slip_active)	//SLIP debug information
+	//{
 			__io_putchar(0300);
 			__io_putchar('\r');
 		#if REDIRECT_STDIO_STRINGMODE
@@ -61,9 +62,10 @@ size_t _write(int handle, const unsigned char *buffer, size_t size)
 			}
 		#endif
 		__io_putchar(0300);
-	}
-	else
-	{
+	//}
+#else /*USE_SLIP*/
+//	else
+//	{
 		#if REDIRECT_STDIO_STRINGMODE
 			__io_putstring(buffer, size);
 		#else
@@ -72,8 +74,8 @@ size_t _write(int handle, const unsigned char *buffer, size_t size)
 			  __io_putchar(*buffer++);
 			}
 		#endif
-	}
-
+//	}
+#endif /*USE_SLIP*/
   return size;
 }
 /*---------------------------------------------------------------------------*/

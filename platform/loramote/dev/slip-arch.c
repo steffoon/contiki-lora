@@ -34,7 +34,7 @@
 #include "lora-contiki-interface.h"
 /*---------------------------------------------------------------------------*/
 extern bool Virtual_ComPort_IsOpen(void);
-extern int _slip_active;
+//extern int _slip_active;
 /*---------------------------------------------------------------------------*/
 void slip_arch_input_callback(UartNotifyId_t id){
   watchdog_periodic();
@@ -48,7 +48,7 @@ void slip_arch_input_callback(UartNotifyId_t id){
 void slip_arch_init(unsigned long ubr)
 {
   UartUsb.IrqNotify = slip_arch_input_callback;
-  _slip_active = 1;
+//  _slip_active = 1;
 }
 /*---------------------------------------------------------------------------*/
 void slip_arch_writeb(unsigned char ch)

@@ -7,6 +7,7 @@
 					<stringMacro name="BOARD" type="VALUE_TEXT" value="BOARD=loramote"/>
 					<stringMacro name="TARGET" type="VALUE_TEXT" value="loramote"/>
 					<stringMacro name="GCC-include" type="VALUE_PATH_DIR" value="/usr/local/gcc-arm-none-eabi-5_4-2016q2/lib/gcc/arm-none-eabi/5.4.1/include"/>
+					<stringMacro name="Project-header" type="VALUE_TEXT" value="\&quot;project-conf.h\&quot;"/>
 				</macros>
 				<externalSettings/>
 				<extensions>
@@ -73,6 +74,7 @@
 									<listOptionValue builtIn="false" value="IAR_ARM_CM3"/>
 									<listOptionValue builtIn="false" value="REDIRECT_STDIO"/>
 									<listOptionValue builtIn="false" value="AUTOSTART_ENABLE"/>
+									<listOptionValue builtIn="false" value="&quot;PROJECT_CONF_H=${Project-header}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1920722107" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa}&quot;"/>
@@ -216,45 +218,9 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.255123948" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1280050926"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1000988672.929206326" name="border-router.c" rcbsApplicability="disable" resourcePath="examples/ipv6/rpl-border-router/border-router.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.722226411.824148185">
-						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.722226411.824148185" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.722226411">
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1357152388" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" valueType="definedSymbols">
-								<listOptionValue builtIn="false" value="SERIALLPM=0"/>
-								<listOptionValue builtIn="false" value="USE_USB_CDC"/>
-								<listOptionValue builtIn="false" value="WEBSERVER=0"/>
-							</option>
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.452008845" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/dev}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/common/CMSIS}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB-FS-Device_Driver/inc}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1/STM32L1xx_StdPeriph_Driver/inc}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board/usb/cdc/inc}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/mac}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/peripherals}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/radio}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/radio/sx1272}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/system}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/system/crypto}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/net}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/dev}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/lib}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/llsec}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/mac}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/rime}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/rpl}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/sys}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/ip}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/ipv6}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/examples/ipv6/rpl-border-router}&quot;"/>
-							</option>
-							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1512995320" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1000988672.1316173405" name="httpd-simple.c" rcbsApplicability="disable" resourcePath="examples/ipv6/rpl-border-router/httpd-simple.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.2020295857.303380473">
+						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.2020295857.303380473" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.2020295857">
+							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1425434054" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 						</tool>
 					</fileInfo>
 					<sourceEntries>

@@ -64,4 +64,6 @@
 #define WEBSERVER_CONF_CFS_CONNS 2
 #endif
 
+#define USE_SLIP	1
+
 #endif /* PROJECT_ROUTER_CONF_H_ */

@@ -39,7 +39,7 @@
 #define AUTOSTART_ENABLE 		1
 #define USE_MODEM_LORA			1
 #define USE_BAND_868			1
-#define PROJECT_CONF_H "project-conf.h"
+//#define PROJECT_CONF_H "project-conf.h"
 
 #include "lora-radio-arch-config.h"
 /*---------------------------------------------------------------------------*/
