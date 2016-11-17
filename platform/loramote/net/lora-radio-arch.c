@@ -184,6 +184,8 @@ static int lora_radio_read(void *buf, unsigned short bufsize)
   /* Checks if buffer has the correct size */
   if(bufsize < lora_radio_rxbuf[0]) {
     PRINTF("READ: TOO SMALL BUFFER\n");
+    PRINTF("READ: DROPPING PACKET\n");
+    CLEAR_RXBUF();
     return 0;
   }
 
@@ -201,6 +203,7 @@ static int lora_radio_channel_clear(void)
 {
   bool channel_clear;
 
+  /*
 #if defined(USE_MODEM_LORA)
   channel_clear = Radio.IsChannelFree(MODEM_LORA, RF_FREQUENCY, CCA_THRESHOLD);
 #elif defined(USE_MODEM_FSK)
@@ -208,6 +211,10 @@ static int lora_radio_channel_clear(void)
 #else
   #error "Please define a modem in the compiler options."
 #endif
+*/
+
+  //TODO: FIX!
+  channel_clear = 1;
 
   PRINTF("CHANNEL CLEAR %d\n", channel_clear);
   return channel_clear;
