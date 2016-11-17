@@ -32,7 +32,7 @@
 /*---------------------------------------------------------------------------*/
 #include "lora-radio-arch.h"
 /*---------------------------------------------------------------------------*/
-#define DEBUG 0
+#define DEBUG 1
 #if DEBUG
   #define PRINTF(...)	printf(__VA_ARGS__)
 #else
@@ -49,6 +49,8 @@ static int packet_is_prepared = 0;
 static const void *packet_payload;
 static unsigned short packet_payload_len = 0;
 static packetbuf_attr_t last_rssi = 0;
+
+static uint8_t lora_is_transmitting = 0;
 /*---------------------------------------------------------------------------*/
 static int lora_radio_init(void);
 static int lora_radio_prepare(const void *payload, unsigned short payload_len);
@@ -84,8 +86,6 @@ const struct radio_driver lora_radio_driver =
 /*---------------------------------------------------------------------------*/
 static int lora_radio_init(void)
 {
-  PRINTF("\nRADIO INIT IN\n");
-
   SpiInit(&SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC);
   SX1272IoInit();
 
@@ -124,15 +124,16 @@ static int lora_radio_init(void)
   #error "Please define a modem in the compiler options."
 #endif
 
+  SX1272SetMaxPayloadLength(MODEM_LORA, LORA_MAX_PAYLOAD_SIZE);
+
   process_start(&lora_radio_process, NULL);
 
-  PRINTF("RADIO INIT OUT\n");
+  PRINTF("RADIO INITIALISED\n");
   return 0;
 }
 /*---------------------------------------------------------------------------*/
 static int lora_radio_prepare(const void *payload, unsigned short payload_len)
 {
-  PRINTF("PREPARE IN: %u bytes\n", payload_len);
   packet_is_prepared = 0;
 
   /* Checks if the payload length is supported */
@@ -144,27 +145,28 @@ static int lora_radio_prepare(const void *payload, unsigned short payload_len)
   packet_payload_len = payload_len;
   packet_is_prepared = 1;
 
-  PRINTF("PREPARE OUT\n");
   return RADIO_TX_OK;
 }
 /*---------------------------------------------------------------------------*/
 static int lora_radio_transmit(unsigned short payload_len)
 {
-  PRINTF("TRANSMIT IN\n");
-
   if(!packet_is_prepared) {
     return RADIO_TX_ERR;
   }
 
+  lora_is_transmitting = 1;
+  PRINTF("RADIO TX packet with len %d\n", packet_payload_len);
   Radio.Send((uint8_t *)packet_payload, packet_payload_len);
   packet_is_prepared = 0;
 
-  PRINTF("TRANSMIT OUT\n");
   return RADIO_TX_OK;
 }
 /*---------------------------------------------------------------------------*/
 static int lora_radio_send(const void *payload, unsigned short payload_len)
 {
+  if(lora_is_transmitting){
+	return RADIO_TX_COLLISION;
+  }
   if(lora_radio_prepare(payload, payload_len) == RADIO_TX_ERR) {
     return RADIO_TX_ERR;
   }
@@ -173,17 +175,15 @@ static int lora_radio_send(const void *payload, unsigned short payload_len)
 /*---------------------------------------------------------------------------*/
 static int lora_radio_read(void *buf, unsigned short bufsize)
 {
-  PRINTF("READ IN\n");
-
   /* Checks if the RX buffer is empty */
   if(IS_RXBUF_EMPTY()) {
-    PRINTF("READ OUT: RX BUFFER EMPTY\n");
+    PRINTF("READ: RX BUFFER EMPTY\n");
     return 0;
   }
 
   /* Checks if buffer has the correct size */
   if(bufsize < lora_radio_rxbuf[0]) {
-    PRINTF("READ OUT: TOO SMALL BUFFER\n");
+    PRINTF("READ: TOO SMALL BUFFER\n");
     return 0;
   }
 
@@ -193,13 +193,12 @@ static int lora_radio_read(void *buf, unsigned short bufsize)
   bufsize = lora_radio_rxbuf[0];
   CLEAR_RXBUF();
 
-  PRINTF("READ OUT\n");
+  PRINTF("RADIO RECV %d BYTES\n",bufsize);
   return bufsize;
 }
 /*---------------------------------------------------------------------------*/
 static int lora_radio_channel_clear(void)
 {
-  PRINTF("CHANNEL CLEAR IN\n");
   bool channel_clear;
 
 #if defined(USE_MODEM_LORA)
@@ -210,7 +209,7 @@ static int lora_radio_channel_clear(void)
   #error "Please define a modem in the compiler options."
 #endif
 
-  PRINTF("CHANNEL CLEAR OUT\n");
+  PRINTF("CHANNEL CLEAR %d\n", channel_clear);
   return channel_clear;
 }
 /*---------------------------------------------------------------------------*/
@@ -268,7 +267,8 @@ PROCESS_THREAD(lora_radio_process, ev, data)
 /*---------------------------------------------------------------------------*/
 void OnTxDone(void)
 {
-  PRINTF("PACKET SENT\n");
+  PRINTF("PACKET SEND CB DONE\n");
+  lora_is_transmitting = 0;
   Radio.Rx(RX_TIMEOUT_VALUE);
 }
 /*---------------------------------------------------------------------------*/
@@ -276,26 +276,27 @@ void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
 {
   memcpy(lora_radio_rxbuf+1, payload, size);
   lora_radio_rxbuf[0] = size;
-  PRINTF("PACKET RECEIVED\n");
+  PRINTF("PACKET RECEIVED CB len %d\n", size);
   process_poll(&lora_radio_process);
   last_rssi = (packetbuf_attr_t)rssi;
 }
 /*---------------------------------------------------------------------------*/
 void OnTxTimeout(void)
 {
-  PRINTF("TX TIMEOUT\n");
+  PRINTF("TX TIMEOUT CB\n");
+  lora_is_transmitting = 0;
   Radio.Rx(RX_TIMEOUT_VALUE);
 }
 /*---------------------------------------------------------------------------*/
 void OnRxTimeout(void)
 {
-  PRINTF("RX TIMEOUT\n");
+  PRINTF("RX TIMEOUT CB\n");
   Radio.Rx(RX_TIMEOUT_VALUE);
 }
 /*---------------------------------------------------------------------------*/
 void OnRxError(void)
 {
-  PRINTF("RX ERROR\n");
+  PRINTF("RX ERROR CB\n");
   Radio.Rx(RX_TIMEOUT_VALUE);
 }
 /*---------------------------------------------------------------------------*/

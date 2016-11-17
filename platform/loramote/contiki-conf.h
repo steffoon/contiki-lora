@@ -45,7 +45,7 @@
 #endif /* NETSTACK_CONF_RDC */
 
 #ifndef NETSTACK_CONF_FRAMER
-  #define NETSTACK_CONF_FRAMER			framer_802154
+  #define NETSTACK_CONF_FRAMER			framer_nullmac
 #endif /* NETSTACK_CONF_FRAMER */
 
 #ifndef NETSTACK_CONF_RADIO

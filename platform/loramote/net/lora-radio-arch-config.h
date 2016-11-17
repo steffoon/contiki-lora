@@ -33,7 +33,7 @@
 #ifndef __LORA_RADIO_ARCH_CONFIG_H__
 #define __LORA_RADIO_ARCH_CONFIG_H__
 /*---------------------------------------------------------------------------*/
-#define LORA_MAX_PAYLOAD_SIZE				255		// Max payload size in bytes
+#define LORA_MAX_PAYLOAD_SIZE			255		// Max payload size in bytes
 #define TX_OUTPUT_POWER					14		// dBm
 #define TX_TIMEOUT_VALUE				3000000		// us
 
@@ -57,7 +57,7 @@
   #define LORA_SYMBOL_TIMEOUT				5		// Symbols
   #define LORA_FIX_LENGTH_PAYLOAD_ON			false
   #define LORA_FIXED_PAYLOAD_LENGTH			0		// bytes
-  #define LORA_CRC_ON					true
+  #define LORA_CRC_ON					true	//TODO set back to true
   #define LORA_FREQUENCY_HOPPING_ON			false
   #define LORA_HOPPING_PERIOD				0		// Symbols
   #define LORA_IQ_INVERSION_ON				false
