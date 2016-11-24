@@ -46,8 +46,11 @@ static const uint8_t DaysInMonthLeapYear[] = {31, 29, 31, 30, 31, 30, 31, 31, 30
 static uint8_t PreviousYear = 0;
 static uint8_t Century = 0;
 /*---------------------------------------------------------------------------*/
+
+#if 0 //DISABLED
 void RTC_Alarm_IRQHandler(void)
 {
+
   ENERGEST_ON(ENERGEST_TYPE_IRQ);
 
   /* Check on the AlarmA flag */
@@ -65,9 +68,12 @@ void RTC_Alarm_IRQHandler(void)
 
   ENERGEST_OFF(ENERGEST_TYPE_IRQ);
 }
+#endif //DISABLED
+
 /*---------------------------------------------------------------------------*/
 void rtimer_arch_init(void)
 {
+#if 0 //DISABLED
   /* Initialize the RTC clock */
   init_rtc();
 
@@ -95,10 +101,14 @@ void rtimer_arch_init(void)
   
   /* Disable the AlarmA */
   RTC_AlarmCmd(RTC_Alarm_A, DISABLE);
+
+#endif //DISABLED
 }
 /*---------------------------------------------------------------------------*/
 rtimer_clock_t rtimer_arch_now(void)
 {
+#if 0 //DISABLED
+
   rtimer_clock_t calendarValue = 0;
   uint8_t i = 0;
 
@@ -145,10 +155,14 @@ rtimer_clock_t rtimer_arch_now(void)
             ((uint32_t)(RTC_DateStruct.RTC_Date * SecondsInDay)));
 
   return calendarValue;
+#endif //DISABLED
+
 }
 /*---------------------------------------------------------------------------*/
 void rtimer_arch_schedule(rtimer_clock_t wakeup_time)
 {
+#if 0 //DISABLED
+
   uint16_t rtcSeconds = 0;
   uint16_t rtcMinutes = 0;
   uint16_t rtcHours = 0;
@@ -208,5 +222,7 @@ void rtimer_arch_schedule(rtimer_clock_t wakeup_time)
   /* Enable the AlarmA */
   RTC_SetAlarm(RTC_Format_BIN, RTC_Alarm_A, &RTC_AlarmStructure);
   RTC_AlarmCmd(RTC_Alarm_A, ENABLE);
+#endif //DISABLED
+
 }
 /*---------------------------------------------------------------------------*/

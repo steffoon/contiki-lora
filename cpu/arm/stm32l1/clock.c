@@ -31,9 +31,12 @@
  */
 /*---------------------------------------------------------------------------*/
 #include "contiki.h"
-#include "stm32l1xx_conf.h"
+//#include "stm32l1xx_conf.h"
 #include "rtc-arch.h"
 #include "lpm-arch.h"
+
+#include "board.h"
+
 /*---------------------------------------------------------------------------*/
 #define DEBUG 0
 #if DEBUG
@@ -47,11 +50,17 @@
 /*---------------------------------------------------------------------------*/
 static volatile unsigned long seconds;
 static volatile clock_time_t ticks;
+
+extern RTC_HandleTypeDef RtcHandle;
+
+
 /*---------------------------------------------------------------------------*/
 void RTC_WKUP_IRQHandler(void)
 {
-  ENERGEST_ON(ENERGEST_TYPE_IRQ);
+	ENERGEST_ON(ENERGEST_TYPE_IRQ);
+	HAL_RTCEx_WakeUpTimerIRQHandler(&RtcHandle);
 
+#if 0
   /* Check on the WakeUp flag */
   if(RTC_GetITStatus(RTC_IT_WUT) != RESET) 
   {
@@ -75,7 +84,28 @@ void RTC_WKUP_IRQHandler(void)
   /* Clear the EXTI line 20 */
   EXTI_ClearITPendingBit(EXTI_Line20);
 
+
+#endif
+
   ENERGEST_OFF(ENERGEST_TYPE_IRQ);
+
+}
+
+void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc)
+{
+    ticks++;
+    if((ticks % CLOCK_SECOND) == 0){
+      seconds++;
+      energest_flush();
+      PRINTF("second %i (%i ticks)\n", seconds, ticks);
+    }
+
+    /* If an etimer expired, continue its process */
+    if(etimer_pending()){
+      lpm_exit_stopmode();
+      etimer_request_poll();
+    }
+
 }
 /*---------------------------------------------------------------------------*/
 void clock_init(void)
@@ -84,8 +114,32 @@ void clock_init(void)
   ticks = 0;
 
   /* Initialize the RTC clock */
-  init_rtc();
+  //init_rtc();
 
+  //RtcInit();
+
+  RtcHandle.Instance = RTC;
+  RtcHandle.Init.HourFormat = RTC_HOURFORMAT_24;
+
+  RtcHandle.Init.AsynchPrediv = 3;
+  RtcHandle.Init.SynchPrediv = 3;
+
+  RtcHandle.Init.OutPut = RTC_OUTPUT_DISABLE;
+  RtcHandle.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+  RtcHandle.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+  HAL_RTC_Init( &RtcHandle );
+
+  HAL_NVIC_SetPriority( RTC_Alarm_IRQn, 4, 0 );
+  HAL_NVIC_EnableIRQ( RTC_Alarm_IRQn );
+
+
+  HAL_NVIC_SetPriority( RTC_WKUP_IRQn, 4, 0 );
+  HAL_NVIC_EnableIRQ( RTC_WKUP_IRQn );
+  HAL_RTCEx_SetWakeUpTimer_IT(&RtcHandle, RTC_WKUPCOUNTER-1, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
+
+
+
+#if 0
   /* Initialize the RTC WakeUp interrupt */
   EXTI_InitTypeDef EXTI_InitStructure;
   NVIC_InitTypeDef NVIC_InitStructure;
@@ -114,6 +168,10 @@ void clock_init(void)
 
   /* Enable Wakeup Counter */
   RTC_WakeUpCmd(ENABLE);
+
+  HAL_RTC_SetAlarm_IT()
+
+#endif
 }
 /*---------------------------------------------------------------------------*/
 unsigned long clock_seconds(void)

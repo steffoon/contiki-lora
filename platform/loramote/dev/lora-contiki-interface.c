@@ -53,6 +53,60 @@ void BoardInitMcu_Contiki( void )
     if( McuInitialized == false )
     {
 #if defined( USE_BOOTLOADER )
+        // Set the Vector Table base location at 0x3000
+        SCB->VTOR = FLASH_BASE | 0x3000;
+#endif
+        HAL_Init( );
+
+        //SystemClockConfig( );
+
+#if defined( USE_USB_CDC )
+        UartInit( &UartUsb, UART_USB_CDC, NC, NC );
+        UartConfig( &UartUsb, RX_TX, 115200, UART_8_BIT, UART_1_STOP_BIT, NO_PARITY, NO_FLOW_CTRL );
+
+        DelayMs( 1000 ); // 1000 ms for Usb initialization
+#endif
+
+        RtcInit( );
+
+        BoardUnusedIoInit( );
+
+        I2cInit( &I2c, I2C_SCL, I2C_SDA );
+    }
+    /*else
+    {
+        SystemClockReConfig( );
+    }*/
+
+    AdcInit( &Adc, BAT_LEVEL );
+
+    //SpiInit( &SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
+    //SX1272IoInit( );
+
+#if defined( USE_DEBUG_PINS )
+        GpioInit( &DbgPin1, CON_EXT_1, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+        GpioInit( &DbgPin2, CON_EXT_3, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+        GpioInit( &DbgPin3, CON_EXT_7, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+        GpioInit( &DbgPin4, CON_EXT_8, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+        GpioInit( &DbgPin5, CON_EXT_9, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+#endif
+
+    /*if( McuInitialized == false )
+    {
+        McuInitialized = true;
+        if( GetBoardPowerSource( ) == BATTERY_POWER )
+        {
+            CalibrateSystemWakeupTime( );
+        }
+    }*/
+}
+
+#if 0
+void BoardInitMcu_Contiki( void )
+{
+    if( McuInitialized == false )
+    {
+#if defined( USE_BOOTLOADER )
         /* Set the Vector Table base location at 0x3000 */
         NVIC_SetVectorTable( NVIC_VectTab_FLASH, 0x3000 );
 #endif
@@ -61,7 +115,7 @@ void BoardInitMcu_Contiki( void )
         NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );
 
         /* Disable Systick */
-        SysTick->CTRL  &= ~SysTick_CTRL_TICKINT_Msk;    // Systick IRQ off 
+        SysTick->CTRL  &= ~SysTick_CTRL_TICKINT_Msk;    // Systick IRQ off
         SCB->ICSR |= SCB_ICSR_PENDSTCLR_Msk;            // Clear SysTick Exception pending flag
 
         I2cInit( &I2c, I2C_SCL, I2C_SDA );
@@ -99,7 +153,6 @@ void BoardInitMcu_Contiki( void )
 }
 
 
-
 static void BoardUnusedIoInit( void )
 {
     Gpio_t ioPin;
@@ -134,12 +187,56 @@ static void BoardUnusedIoInit( void )
     DBGMCU_Config( DBGMCU_SLEEP, DISABLE );
     DBGMCU_Config( DBGMCU_STOP, DISABLE );
     DBGMCU_Config( DBGMCU_STANDBY, DISABLE );
-    
+
     GpioInit( &ioPin, JTAG_TMS, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, JTAG_TCK, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, JTAG_TDI, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, JTAG_TDO, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, JTAG_NRST, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
-#endif    
+#endif
+}
+#endif //disabled old fuctions
+
+static void BoardUnusedIoInit( void )
+{
+    Gpio_t ioPin;
+
+    /* External Connector J5 */
+#if !defined( USE_DEBUG_PINS )
+    GpioInit( &ioPin, CON_EXT_1, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, CON_EXT_3, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, CON_EXT_7, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, CON_EXT_8, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, CON_EXT_9, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+#endif
+
+    /* USB */
+#if !defined( USE_USB_CDC )
+    GpioInit( &ioPin, USB_DM, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, USB_DP, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+#endif
+
+    GpioInit( &ioPin, BOOT_1, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+
+    GpioInit( &ioPin, BAT_LEVEL, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+
+    GpioInit( &ioPin, PIN_PB6, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, WKUP1, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+
+#if defined( USE_DEBUGGER )
+    HAL_DBGMCU_EnableDBGStopMode( );
+    HAL_DBGMCU_EnableDBGSleepMode( );
+    HAL_DBGMCU_EnableDBGStandbyMode( );
+#else
+    HAL_DBGMCU_DisableDBGSleepMode( );
+    HAL_DBGMCU_DisableDBGStopMode( );
+    HAL_DBGMCU_DisableDBGStandbyMode( );
+
+    GpioInit( &ioPin, JTAG_TMS, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, JTAG_TCK, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, JTAG_TDI, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, JTAG_TDO, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+    GpioInit( &ioPin, JTAG_NRST, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+#endif
 }
 

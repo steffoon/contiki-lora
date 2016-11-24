@@ -21,6 +21,7 @@ Maintainer: Miguel Luis and Gregory Cristian
 #include <string.h>
 #include <stdint.h>
 #include "stm32l1xx.h"
+#include "stm32l1xx_hal.h"
 #include "utilities.h"
 #include "loratimer.h"
 #include "delay.h"
@@ -38,12 +39,11 @@ Maintainer: Miguel Luis and Gregory Cristian
 #include "gps.h"
 #include "gps-board.h"
 #include "rtc-board.h"
-#include "timer-board.h"
 #include "sx1272-board.h"
 #include "uart-board.h"
 
 #if defined( USE_USB_CDC )
-#include "usb-cdc-board.h"
+#include "uart-usb-board.h"
 #endif
 
 /*!
@@ -59,7 +59,7 @@ Maintainer: Miguel Luis and Gregory Cristian
 #endif
 
 #ifndef FAIL
-#define FAIL                                        0  
+#define FAIL                                        0
 #endif
 
 /*!
@@ -121,15 +121,15 @@ Maintainer: Miguel Luis and Gregory Cristian
 #define I2C_SCL                                     PB_8
 #define I2C_SDA                                     PB_9
 
-#define CON_EXT_1                                   PB_13                                                                        
-#define CON_EXT_3                                   PB_15                                
-#define CON_EXT_7                                   PB_12   
+#define CON_EXT_1                                   PB_13
+#define CON_EXT_3                                   PB_15
+#define CON_EXT_7                                   PB_12
 #define CON_EXT_8                                   PB_14
-#define CON_EXT_9                                   PA_1     
+#define CON_EXT_9                                   PA_1
 #define BAT_LEVEL                                   PA_3
 
 #define BOOT_1                                      PB_2
-    
+
 #define GPS_PPS                                     PA_8
 #define UART_TX                                     PA_9
 #define UART_RX                                     PA_10
@@ -166,6 +166,7 @@ extern Gpio_t DbgPin1;
 extern Gpio_t DbgPin2;
 extern Gpio_t DbgPin3;
 extern Gpio_t DbgPin4;
+extern Gpio_t DbgPin5;
 #endif
 
 /*!
@@ -181,6 +182,12 @@ extern Uart_t UartUsb;
 extern Gpio_t GpsPps;
 extern Gpio_t GpsRx;
 extern Gpio_t GpsTx;
+
+enum BoardPowerSource
+{
+    USB_POWER = 0,
+    BATTERY_POWER
+};
 
 /*!
  * \brief Initializes the target board peripherals.
@@ -213,10 +220,17 @@ uint8_t BoardGetBatteryLevel( void );
 uint32_t BoardGetRandomSeed( void );
 
 /*!
- * \brief Gets the board 64 bits unique ID 
+ * \brief Gets the board 64 bits unique ID
  *
  * \param [IN] id Pointer to an array that will contain the Unique ID
  */
 void BoardGetUniqueId( uint8_t *id );
+
+/*!
+ * \brief Get the board power source
+ *
+ * \retval value  power source ( 0: USB_POWER,  1: BATTERY_POWER )
+ */
+uint8_t GetBoardPowerSource( void );
 
 #endif // __BOARD_H__

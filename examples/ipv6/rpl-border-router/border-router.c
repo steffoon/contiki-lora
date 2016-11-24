@@ -62,6 +62,10 @@ static uint8_t prefix_set;
 
 PROCESS(border_router_process, "Border router process");
 
+#ifndef WEBSERVER
+#define WEBSERVER 1
+#endif
+
 #if WEBSERVER==0
 /* No webserver */
 AUTOSTART_PROCESSES(&border_router_process);

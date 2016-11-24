@@ -120,14 +120,15 @@ PROCESS_THREAD(udp_server_process, ev, data)
  * Note Wireshark's IPCMV6 checksum verification depends on the correct uncompressed addresses.
  */
  
+  /*
 #if 0
-/* Mode 1 - 64 bits inline */
+// Mode 1 - 64 bits inline
    uip_ip6addr(&ipaddr, UIP_DS6_DEFAULT_PREFIX, 0, 0, 0, 0, 0, 0, 1);
 #elif 1
-/* Mode 2 - 16 bits inline */
+// Mode 2 - 16 bits inline
   uip_ip6addr(&ipaddr, UIP_DS6_DEFAULT_PREFIX, 0, 0, 0, 0, 0x00ff, 0xfe00, 1);
 #else
-/* Mode 3 - derived from link local (MAC) address */
+// Mode 3 - derived from link local (MAC) address
   uip_ip6addr(&ipaddr, UIP_DS6_DEFAULT_PREFIX, 0, 0, 0, 0, 0, 0, 0);
   uip_ds6_set_addr_iid(&ipaddr, &uip_lladdr);
 #endif
@@ -143,7 +144,13 @@ PROCESS_THREAD(udp_server_process, ev, data)
   } else {
     PRINTF("failed to create a new RPL DAG\n");
   }
-#endif /* UIP_CONF_ROUTER */
+  */
+#endif // UIP_CONF_ROUTER
+
+
+  uip_ip6addr(&ipaddr, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
+  uip_ds6_set_addr_iid(&ipaddr, &uip_lladdr);
+  uip_ds6_addr_add(&ipaddr, 0, ADDR_AUTOCONF);
   
   print_local_addresses();
 
@@ -167,10 +174,10 @@ PROCESS_THREAD(udp_server_process, ev, data)
     PROCESS_YIELD();
     if(ev == tcpip_event) {
       tcpip_handler();
-    } else if (ev == sensors_event && data == &button_sensor) {
+    } /*else if (ev == sensors_event && data == &button_sensor) {
       PRINTF("Initiaing global repair\n");
       rpl_repair_root(RPL_DEFAULT_INSTANCE);
-    }
+    } */
   }
 
   PROCESS_END();

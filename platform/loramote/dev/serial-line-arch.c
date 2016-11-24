@@ -43,7 +43,7 @@
   #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE * f)
 #endif /* __GNUC__ */
 /*---------------------------------------------------------------------------*/
-extern bool Virtual_ComPort_IsOpen(void);
+extern uint8_t UartUsbIsUsbCableConnected(void);
 /*---------------------------------------------------------------------------*/
 void serial_line_arch_input_callback(UartNotifyId_t id){
   watchdog_periodic();
@@ -63,7 +63,7 @@ PUTCHAR_PROTOTYPE
 {
   watchdog_periodic();
   /* Does not work during hardware interrupts */
-  if(Virtual_ComPort_IsOpen()){
+  if(UartUsbIsUsbCableConnected()){
     while(UartPutChar(&UartUsb, ch));
   }
   return ch;
@@ -72,7 +72,7 @@ PUTCHAR_PROTOTYPE
 PUTSTRING_PROTOTYPE
 {
   watchdog_periodic();
-  if(Virtual_ComPort_IsOpen()){
+  if(UartUsbIsUsbCableConnected()){
     while(UartPutBuffer(&UartUsb, (uint8_t*)buffer, size));
   }
   return size;

@@ -33,7 +33,7 @@
 #ifndef __LPM_ARCH_H__
 #define __LPM_ARCH_H__
 /*---------------------------------------------------------------------------*/
-#include "stm32l1xx_conf.h"
+//#include "stm32l1xx_conf.h"
 /*---------------------------------------------------------------------------*/
 void lpm_enter_stopmode(void);
 void lpm_exit_stopmode(void);

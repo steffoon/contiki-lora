@@ -41,7 +41,8 @@ void lpm_enter_stopmode(void)
   stopModeActivated = 1;
 
 #if SERIALLPM /* Use Sleep instead of STOP when using USB serial connection */
-  PWR_EnterSleepMode(PWR_Regulator_LowPower, PWR_STOPEntry_WFI);
+  //PWR_EnterSleepMode(PWR_Regulator_LowPower, PWR_STOPEntry_WFI);
+  //TODO ENABLE AGAIN!
 #else
   /* Disable the Power Voltage Detector */
   PWR_PVDCmd(DISABLE);

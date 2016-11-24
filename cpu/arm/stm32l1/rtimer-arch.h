@@ -35,7 +35,7 @@
 /*---------------------------------------------------------------------------*/
 #include <math.h>
 #include "contiki.h"
-#include "stm32l1xx_conf.h"
+//#include "stm32l1xx_conf.h"
 #include "rtc-arch.h"
 #include "lpm-arch.h"
 /*---------------------------------------------------------------------------*/

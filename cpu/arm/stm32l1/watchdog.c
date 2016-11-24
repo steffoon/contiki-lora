@@ -31,13 +31,15 @@
  */
 /*---------------------------------------------------------------------------*/
 #include "dev/watchdog.h"
-#include "stm32l1xx_conf.h"
+//#include "stm32l1xx_conf.h"
 #include "contiki-conf.h"
 /*---------------------------------------------------------------------------*/
 static uint8_t counterValue;
 /*---------------------------------------------------------------------------*/
 void watchdog_init(void)
 {
+
+#if 0 //Disabled
 #if WATCHDOG_USE_IWDG
   /* Get the LSI frequency: 37kHz according to stm32l1x datasheet,
      but can be measured with a high speed oscillator for greater precision */
@@ -74,6 +76,8 @@ void watchdog_init(void)
      ~1024us * (127-127) = 0 ms < refresh window < ~1024us * 64 = 65.53ms */
   counterValue = 127;
 #endif
+
+#endif //disabled
 }
 /*---------------------------------------------------------------------------*/
 void watchdog_start(void)
@@ -92,12 +96,15 @@ void watchdog_start(void)
 /*---------------------------------------------------------------------------*/
 void watchdog_periodic(void)
 {
+#if 0 //DISABLED
   /* This function is called periodically to restart the watchdog timer */
 #if WATCHDOG_USE_IWDG
   IWDG_ReloadCounter();
 #else
   WWDG_SetCounter(counterValue);
 #endif
+
+#endif //DISABLED
 }
 /*---------------------------------------------------------------------------*/
 void watchdog_stop(void)

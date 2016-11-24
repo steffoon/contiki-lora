@@ -56,11 +56,3 @@ bool IsFifoFull( Fifo_t *fifo )
 {
     return ( FifoNext( fifo, fifo->End ) == fifo->Begin );
 }
-
-uint16_t FifoSize( Fifo_t *fifo )
-{
-	if(fifo->Begin > fifo->End) //Circular buffer crossed bounds
-		return (fifo->Size + fifo->End - fifo->Begin);
-	else
-		return (fifo->End - fifo->Begin);
-}
