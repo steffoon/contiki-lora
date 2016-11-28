@@ -106,14 +106,12 @@ void rtimer_arch_init(void)
 
 #endif //DISABLED
 
-  //RtcInit();  //This fucks up the Contiki clock! Do not do
-
 }
 /*---------------------------------------------------------------------------*/
 rtimer_clock_t rtimer_arch_now(void)
 {
 
-	return TimerGetValue();
+	return TimerGetCurrentTime();
 
 #if 0 //DISABLED
 
@@ -171,7 +169,7 @@ void rtimer_arch_schedule(rtimer_clock_t wakeup_time)
 {
 	//RtcSetTimeout(wakeup_time);
 
-	TimerSetValue(&loraTimer, wakeup_time);
+	TimerSetValue(&loraTimer, wakeup_time-TimerGetCurrentTime());
 	TimerStart(&loraTimer);
 
 #if 0 //DISABLED
