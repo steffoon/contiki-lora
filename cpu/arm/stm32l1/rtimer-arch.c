@@ -31,21 +31,16 @@
  */
 /*---------------------------------------------------------------------------*/
 #include "rtimer-arch.h"
+#include <stdbool.h>
+#include "loratimer.h"
+
 /*---------------------------------------------------------------------------*/
-#define MCU_WAKE_UP_TIME_TICKS		(MCU_WAKE_UP_TIME / (1000000/RTIMER_SECOND))
+
+//#define MCU_WAKE_UP_TIME_TICKS		(MCU_WAKE_UP_TIME / (1000000/RTIMER_SECOND))
 /*---------------------------------------------------------------------------*/
-static const uint8_t SecondsInMinute = 60;
-static const uint16_t SecondsInHour = 3600;
-static const uint32_t SecondsInDay = 86400;
-static const uint8_t HoursInDay = 24;
-static const uint16_t DaysInYear = 365;
-static const uint16_t DaysInLeapYear = 366;
-static const double DaysInCentury = 36524.219;
-static const uint8_t DaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-static const uint8_t DaysInMonthLeapYear[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-static uint8_t PreviousYear = 0;
-static uint8_t Century = 0;
-/*---------------------------------------------------------------------------*/
+
+
+TimerEvent_t loraTimer;
 
 #if 0 //DISABLED
 void RTC_Alarm_IRQHandler(void)
@@ -71,8 +66,15 @@ void RTC_Alarm_IRQHandler(void)
 #endif //DISABLED
 
 /*---------------------------------------------------------------------------*/
+
+void rtimer_callback(void){
+    lpm_exit_stopmode();
+    rtimer_run_next();}
+
 void rtimer_arch_init(void)
 {
+	TimerInit(&loraTimer, rtimer_callback);
+
 #if 0 //DISABLED
   /* Initialize the RTC clock */
   init_rtc();
@@ -103,10 +105,16 @@ void rtimer_arch_init(void)
   RTC_AlarmCmd(RTC_Alarm_A, DISABLE);
 
 #endif //DISABLED
+
+  //RtcInit();  //This fucks up the Contiki clock! Do not do
+
 }
 /*---------------------------------------------------------------------------*/
 rtimer_clock_t rtimer_arch_now(void)
 {
+
+	return TimerGetValue();
+
 #if 0 //DISABLED
 
   rtimer_clock_t calendarValue = 0;
@@ -161,6 +169,11 @@ rtimer_clock_t rtimer_arch_now(void)
 /*---------------------------------------------------------------------------*/
 void rtimer_arch_schedule(rtimer_clock_t wakeup_time)
 {
+	//RtcSetTimeout(wakeup_time);
+
+	TimerSetValue(&loraTimer, wakeup_time);
+	TimerStart(&loraTimer);
+
 #if 0 //DISABLED
 
   uint16_t rtcSeconds = 0;

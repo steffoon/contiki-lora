@@ -390,7 +390,8 @@ static void RtcStartWakeUpAlarm( uint32_t timeoutValue )
     RTC_AlarmTypeDef alarmStructure;
 
     HAL_RTC_DeactivateAlarm( &RtcHandle, RTC_ALARM_A );
-    HAL_RTCEx_DeactivateWakeUpTimer( &RtcHandle );
+//    HAL_RTCEx_DeactivateWakeUpTimer( &RtcHandle );
+//WakeUpTimer used for Contiki clock!  DO NOT DISABLE!
 
     // Load the RTC calendar
     now = RtcGetCalendar( );
