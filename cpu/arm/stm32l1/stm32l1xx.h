@@ -137,9 +137,6 @@
   * @{
   */
 
-//TODO remove!
-#define STM32L151xB
-
 #if defined(STM32L100xB)
   #include "stm32l100xb.h"
 #elif defined(STM32L100xBA)

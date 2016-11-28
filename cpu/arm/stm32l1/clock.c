@@ -38,7 +38,7 @@
 #include "board.h"
 
 /*---------------------------------------------------------------------------*/
-#define DEBUG 0
+#define DEBUG 0   //PRINTF INITIALLY NOT WORKING WITH USB!
 #if DEBUG
   #define PRINTF(...)	printf(__VA_ARGS__)
 #else
@@ -48,13 +48,17 @@
 /* The counter assumes the timer is sourced with the LSE and uses Div16 */
 #define RTC_WKUPCOUNTER			((F_LSE/16) / CLOCK_SECOND)
 /*---------------------------------------------------------------------------*/
-static volatile unsigned long seconds;
-static volatile clock_time_t ticks;
+static volatile unsigned long seconds = 0;
+static volatile clock_time_t ticks = 0;
 
 extern RTC_HandleTypeDef RtcHandle;
 
 
 /*---------------------------------------------------------------------------*/
+/* Interrupt routine for RTC clock. This clock stays operational in low power mode
+ * A fix is required in the STM32Cube HAL in order for this interrupt to work. See clock_init() for more information.
+ *
+ * */
 void RTC_WKUP_IRQHandler(void)
 {
 	ENERGEST_ON(ENERGEST_TYPE_IRQ);
@@ -107,16 +111,19 @@ void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc)
     }
 
 }
+
 /*---------------------------------------------------------------------------*/
 void clock_init(void)
 {
+
   seconds = 0;
   ticks = 0;
 
   /* Initialize the RTC clock */
-  //init_rtc();
+//  RtcInit();
 
-  //RtcInit();
+  __HAL_RCC_RTC_ENABLE( );
+
 
   RtcHandle.Instance = RTC;
   RtcHandle.Init.HourFormat = RTC_HOURFORMAT_24;
@@ -133,13 +140,24 @@ void clock_init(void)
   HAL_NVIC_EnableIRQ( RTC_Alarm_IRQn );
 
 
-  HAL_NVIC_SetPriority( RTC_WKUP_IRQn, 4, 0 );
+  HAL_NVIC_SetPriority( RTC_WKUP_IRQn, 0, 0 );
   HAL_NVIC_EnableIRQ( RTC_WKUP_IRQn );
+
+
+  /* The following STM32Cube HAL function HAL_RTCEx_SetWakeUpTimer_IT contains a bug!
+   * The RTC_WKUP_IRQHandler interrupt routine will not be called unless fixed.
+   * Between   hrtc->Instance->CR |= (uint32_t)WakeUpClock;
+   * and   __HAL_RTC_WAKEUPTIMER_EXTI_ENABLE_IT();
+   * add the following code:
+   * //RTC WakeUpTimer Interrupt - Clear any existing flags
+   * __HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(hrtc, RTC_FLAG_WUTF);
+   * This fix ensures the RTC based wakeup clock to work as intended.
+   */
   HAL_RTCEx_SetWakeUpTimer_IT(&RtcHandle, RTC_WKUPCOUNTER-1, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
 
 
 
-#if 0
+#if 0  //Original code with STM32 STDLIB, before migration to STM32 HAL
   /* Initialize the RTC WakeUp interrupt */
   EXTI_InitTypeDef EXTI_InitStructure;
   NVIC_InitTypeDef NVIC_InitStructure;

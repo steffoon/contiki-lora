@@ -13,6 +13,8 @@ License: Revised BSD License, see LICENSE.TXT file include in the project
 
 #include "lora-contiki-interface.h"
 
+//TODO FIX!
+#define USE_DEBUGGER 1
 
 /* Initializes the unused GPIO to a know status */
 static void BoardUnusedIoInit(void);
@@ -27,6 +29,7 @@ void myUartSend(uint8_t data[]){
   while(UartPutBuffer(&UartUsb, data, len));
 }
 
+#if 0  //Use the HAL based delays instead of RTIMER
 void Delay(float s)
 {
     DelayMs(s*1000);
@@ -46,6 +49,59 @@ void DelayMs(uint32_t ms)
     __NOP();
   }
 }
+#endif
+
+void Delay( float s )
+{
+    DelayMs( s * 1000.0f );
+}
+
+void DelayMs( uint32_t ms )
+{
+    HAL_Delay( ms );
+}
+
+
+void SystemClockConfig( void )
+{
+    RCC_OscInitTypeDef RCC_OscInitStruct;
+    RCC_ClkInitTypeDef RCC_ClkInitStruct;
+    RCC_PeriphCLKInitTypeDef PeriphClkInit;
+
+    __HAL_RCC_PWR_CLK_ENABLE( );
+
+    __HAL_PWR_VOLTAGESCALING_CONFIG( PWR_REGULATOR_VOLTAGE_SCALE1 );
+
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
+    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+    RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
+    RCC_OscInitStruct.PLL.PLLDIV = RCC_PLL_DIV3;
+    HAL_RCC_OscConfig( &RCC_OscInitStruct );
+
+    RCC_ClkInitStruct.ClockType = ( RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2 );
+    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+    HAL_RCC_ClockConfig( &RCC_ClkInitStruct, FLASH_LATENCY_1 );
+
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
+    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+    HAL_RCCEx_PeriphCLKConfig( &PeriphClkInit );
+
+    HAL_SYSTICK_Config( HAL_RCC_GetHCLKFreq( ) / 1000 );
+
+    HAL_SYSTICK_CLKSourceConfig( SYSTICK_CLKSOURCE_HCLK );
+
+    /*    HAL_NVIC_GetPriorityGrouping*/
+    HAL_NVIC_SetPriorityGrouping( NVIC_PRIORITYGROUP_4 );
+
+    /* SysTick_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority( SysTick_IRQn, 0, 0 );
+}
 
 
 void BoardInitMcu_Contiki( void )
@@ -58,7 +114,7 @@ void BoardInitMcu_Contiki( void )
 #endif
         HAL_Init( );
 
-        //SystemClockConfig( );
+        SystemClockConfig( );
 
 #if defined( USE_USB_CDC )
         UartInit( &UartUsb, UART_USB_CDC, NC, NC );
@@ -73,15 +129,12 @@ void BoardInitMcu_Contiki( void )
 
         I2cInit( &I2c, I2C_SCL, I2C_SDA );
     }
-    /*else
-    {
-        SystemClockReConfig( );
-    }*/
+
 
     AdcInit( &Adc, BAT_LEVEL );
 
-    //SpiInit( &SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
-    //SX1272IoInit( );
+    SpiInit( &SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
+    SX1272IoInit( );
 
 #if defined( USE_DEBUG_PINS )
         GpioInit( &DbgPin1, CON_EXT_1, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
@@ -91,17 +144,17 @@ void BoardInitMcu_Contiki( void )
         GpioInit( &DbgPin5, CON_EXT_9, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
 #endif
 
-    /*if( McuInitialized == false )
+    if( McuInitialized == false )
     {
         McuInitialized = true;
-        if( GetBoardPowerSource( ) == BATTERY_POWER )
+        /*if( GetBoardPowerSource( ) == BATTERY_POWER )
         {
             CalibrateSystemWakeupTime( );
-        }
-    }*/
+        }*/
+    }
 }
 
-#if 0
+#if 0 //Disabled STM32 STD code, migrated to STM32cube HAL and more recent loramote code.
 void BoardInitMcu_Contiki( void )
 {
     if( McuInitialized == false )
@@ -222,6 +275,7 @@ static void BoardUnusedIoInit( void )
 
     GpioInit( &ioPin, PIN_PB6, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, WKUP1, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+
 
 #if defined( USE_DEBUGGER )
     HAL_DBGMCU_EnableDBGStopMode( );

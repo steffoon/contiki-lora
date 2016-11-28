@@ -1679,6 +1679,11 @@ HAL_StatusTypeDef HAL_RTCEx_SetWakeUpTimer_IT(RTC_HandleTypeDef *hrtc, uint32_t 
   /* Configure the clock source */
   hrtc->Instance->CR |= (uint32_t)WakeUpClock;
 
+  //BUGFIX BY STEFFEN THIELEMANS!
+  // RTC WakeUpTimer Interrupt - Clear any existing flags
+  __HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(hrtc, RTC_FLAG_WUTF);
+  //END OF BUGFIX
+
   /* RTC WakeUpTimer Interrupt Configuration: EXTI configuration */
   __HAL_RTC_WAKEUPTIMER_EXTI_ENABLE_IT();
 
