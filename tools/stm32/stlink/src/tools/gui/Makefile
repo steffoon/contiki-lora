@@ -48,35 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -92,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CPackSourceConfig.cmake
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -110,6 +88,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -157,14 +146,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/tools/gui/CMakeFiles/progress.marks
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles 0
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_progress_start /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/tools/gui/CMakeFiles/progress.marks
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/clean
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/clean
 .PHONY : clean
 
 # The main clean target
@@ -174,17 +163,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/preinstall
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/preinstall
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/tools/gui/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -193,11 +182,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... test"
-	@echo "... package"
 	@echo "... edit_cache"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... package"
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... list_install_components"
@@ -213,6 +201,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

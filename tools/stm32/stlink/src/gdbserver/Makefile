@@ -48,35 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -92,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CPackSourceConfig.cmake
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -110,6 +88,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -157,14 +146,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver/CMakeFiles/progress.marks
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles 0
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_progress_start /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver/CMakeFiles/progress.marks
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/clean
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/clean
 .PHONY : clean
 
 # The main clean target
@@ -174,22 +163,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/preinstall
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/preinstall
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/gdbserver/CMakeFiles/st-util.dir/rule:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/CMakeFiles/st-util.dir/rule
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 src/gdbserver/CMakeFiles/st-util.dir/rule
 .PHONY : src/gdbserver/CMakeFiles/st-util.dir/rule
 
 # Convenience name for target.
@@ -199,7 +188,7 @@ st-util: src/gdbserver/CMakeFiles/st-util.dir/rule
 
 # fast build rule for target.
 st-util/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/build
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/build
 .PHONY : st-util/fast
 
 gdb-remote.o: gdb-remote.c.o
@@ -208,7 +197,7 @@ gdb-remote.o: gdb-remote.c.o
 
 # target to build an object file
 gdb-remote.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o
 .PHONY : gdb-remote.c.o
 
 gdb-remote.i: gdb-remote.c.i
@@ -217,7 +206,7 @@ gdb-remote.i: gdb-remote.c.i
 
 # target to preprocess a source file
 gdb-remote.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.i
 .PHONY : gdb-remote.c.i
 
 gdb-remote.s: gdb-remote.c.s
@@ -226,7 +215,7 @@ gdb-remote.s: gdb-remote.c.s
 
 # target to generate assembly for a file
 gdb-remote.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.s
 .PHONY : gdb-remote.c.s
 
 gdb-server.o: gdb-server.c.o
@@ -235,7 +224,7 @@ gdb-server.o: gdb-server.c.o
 
 # target to build an object file
 gdb-server.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o
 .PHONY : gdb-server.c.o
 
 gdb-server.i: gdb-server.c.i
@@ -244,7 +233,7 @@ gdb-server.i: gdb-server.c.i
 
 # target to preprocess a source file
 gdb-server.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.i
 .PHONY : gdb-server.c.i
 
 gdb-server.s: gdb-server.c.s
@@ -253,7 +242,7 @@ gdb-server.s: gdb-server.c.s
 
 # target to generate assembly for a file
 gdb-server.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.s
 .PHONY : gdb-server.c.s
 
 semihosting.o: semihosting.c.o
@@ -262,7 +251,7 @@ semihosting.o: semihosting.c.o
 
 # target to build an object file
 semihosting.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o
 .PHONY : semihosting.c.o
 
 semihosting.i: semihosting.c.i
@@ -271,7 +260,7 @@ semihosting.i: semihosting.c.i
 
 # target to preprocess a source file
 semihosting.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.i
 .PHONY : semihosting.c.i
 
 semihosting.s: semihosting.c.s
@@ -280,7 +269,7 @@ semihosting.s: semihosting.c.s
 
 # target to generate assembly for a file
 semihosting.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f src/gdbserver/CMakeFiles/st-util.dir/build.make src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.s
 .PHONY : semihosting.c.s
 
 # Help Target
@@ -289,11 +278,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... test"
-	@echo "... package"
 	@echo "... edit_cache"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... package"
 	@echo "... st-util"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -319,6 +307,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

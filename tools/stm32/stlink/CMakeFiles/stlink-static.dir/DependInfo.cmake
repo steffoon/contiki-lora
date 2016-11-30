@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/chipid.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink-static.dir/src/chipid.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/common.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink-static.dir/src/common.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/flash_loader.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink-static.dir/src/flash_loader.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/logging.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink-static.dir/src/logging.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/sg.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink-static.dir/src/sg.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/usb.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink-static.dir/src/usb.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/chipid.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink-static.dir/src/chipid.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/common.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink-static.dir/src/common.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/flash_loader.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink-static.dir/src/flash_loader.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/logging.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink-static.dir/src/logging.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/sg.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink-static.dir/src/sg.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/usb.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink-static.dir/src/usb.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -21,9 +21,9 @@ set(CMAKE_TARGET_DEFINITIONS_C
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/libusb-1.0"
-  "../include"
+  "../../include"
   "include"
-  "../src/mingw"
+  "../../src/mingw"
   )
 
 # Targets to which this target links.

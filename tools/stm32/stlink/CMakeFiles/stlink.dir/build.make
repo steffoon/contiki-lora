@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 # Include any dependencies generated for this target.
 include CMakeFiles/stlink.dir/depend.make
@@ -58,17 +58,17 @@ include CMakeFiles/stlink.dir/progress.make
 include CMakeFiles/stlink.dir/flags.make
 
 CMakeFiles/stlink.dir/src/chipid.c.o: CMakeFiles/stlink.dir/flags.make
-CMakeFiles/stlink.dir/src/chipid.c.o: ../src/chipid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/stlink.dir/src/chipid.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/chipid.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/chipid.c
+CMakeFiles/stlink.dir/src/chipid.c.o: ../../src/chipid.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/stlink.dir/src/chipid.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/chipid.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/chipid.c
 
 CMakeFiles/stlink.dir/src/chipid.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stlink.dir/src/chipid.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/chipid.c > CMakeFiles/stlink.dir/src/chipid.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/chipid.c > CMakeFiles/stlink.dir/src/chipid.c.i
 
 CMakeFiles/stlink.dir/src/chipid.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stlink.dir/src/chipid.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/chipid.c -o CMakeFiles/stlink.dir/src/chipid.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/chipid.c -o CMakeFiles/stlink.dir/src/chipid.c.s
 
 CMakeFiles/stlink.dir/src/chipid.c.o.requires:
 
@@ -82,17 +82,17 @@ CMakeFiles/stlink.dir/src/chipid.c.o.provides.build: CMakeFiles/stlink.dir/src/c
 
 
 CMakeFiles/stlink.dir/src/common.c.o: CMakeFiles/stlink.dir/flags.make
-CMakeFiles/stlink.dir/src/common.c.o: ../src/common.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/stlink.dir/src/common.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/common.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/common.c
+CMakeFiles/stlink.dir/src/common.c.o: ../../src/common.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/stlink.dir/src/common.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/common.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/common.c
 
 CMakeFiles/stlink.dir/src/common.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stlink.dir/src/common.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/common.c > CMakeFiles/stlink.dir/src/common.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/common.c > CMakeFiles/stlink.dir/src/common.c.i
 
 CMakeFiles/stlink.dir/src/common.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stlink.dir/src/common.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/common.c -o CMakeFiles/stlink.dir/src/common.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/common.c -o CMakeFiles/stlink.dir/src/common.c.s
 
 CMakeFiles/stlink.dir/src/common.c.o.requires:
 
@@ -106,17 +106,17 @@ CMakeFiles/stlink.dir/src/common.c.o.provides.build: CMakeFiles/stlink.dir/src/c
 
 
 CMakeFiles/stlink.dir/src/usb.c.o: CMakeFiles/stlink.dir/flags.make
-CMakeFiles/stlink.dir/src/usb.c.o: ../src/usb.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/stlink.dir/src/usb.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/usb.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/usb.c
+CMakeFiles/stlink.dir/src/usb.c.o: ../../src/usb.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/stlink.dir/src/usb.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/usb.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/usb.c
 
 CMakeFiles/stlink.dir/src/usb.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stlink.dir/src/usb.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/usb.c > CMakeFiles/stlink.dir/src/usb.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/usb.c > CMakeFiles/stlink.dir/src/usb.c.i
 
 CMakeFiles/stlink.dir/src/usb.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stlink.dir/src/usb.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/usb.c -o CMakeFiles/stlink.dir/src/usb.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/usb.c -o CMakeFiles/stlink.dir/src/usb.c.s
 
 CMakeFiles/stlink.dir/src/usb.c.o.requires:
 
@@ -130,17 +130,17 @@ CMakeFiles/stlink.dir/src/usb.c.o.provides.build: CMakeFiles/stlink.dir/src/usb.
 
 
 CMakeFiles/stlink.dir/src/sg.c.o: CMakeFiles/stlink.dir/flags.make
-CMakeFiles/stlink.dir/src/sg.c.o: ../src/sg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/stlink.dir/src/sg.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/sg.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/sg.c
+CMakeFiles/stlink.dir/src/sg.c.o: ../../src/sg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/stlink.dir/src/sg.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/sg.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/sg.c
 
 CMakeFiles/stlink.dir/src/sg.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stlink.dir/src/sg.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/sg.c > CMakeFiles/stlink.dir/src/sg.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/sg.c > CMakeFiles/stlink.dir/src/sg.c.i
 
 CMakeFiles/stlink.dir/src/sg.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stlink.dir/src/sg.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/sg.c -o CMakeFiles/stlink.dir/src/sg.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/sg.c -o CMakeFiles/stlink.dir/src/sg.c.s
 
 CMakeFiles/stlink.dir/src/sg.c.o.requires:
 
@@ -154,17 +154,17 @@ CMakeFiles/stlink.dir/src/sg.c.o.provides.build: CMakeFiles/stlink.dir/src/sg.c.
 
 
 CMakeFiles/stlink.dir/src/logging.c.o: CMakeFiles/stlink.dir/flags.make
-CMakeFiles/stlink.dir/src/logging.c.o: ../src/logging.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/stlink.dir/src/logging.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/logging.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/logging.c
+CMakeFiles/stlink.dir/src/logging.c.o: ../../src/logging.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/stlink.dir/src/logging.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/logging.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/logging.c
 
 CMakeFiles/stlink.dir/src/logging.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stlink.dir/src/logging.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/logging.c > CMakeFiles/stlink.dir/src/logging.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/logging.c > CMakeFiles/stlink.dir/src/logging.c.i
 
 CMakeFiles/stlink.dir/src/logging.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stlink.dir/src/logging.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/logging.c -o CMakeFiles/stlink.dir/src/logging.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/logging.c -o CMakeFiles/stlink.dir/src/logging.c.s
 
 CMakeFiles/stlink.dir/src/logging.c.o.requires:
 
@@ -178,17 +178,17 @@ CMakeFiles/stlink.dir/src/logging.c.o.provides.build: CMakeFiles/stlink.dir/src/
 
 
 CMakeFiles/stlink.dir/src/flash_loader.c.o: CMakeFiles/stlink.dir/flags.make
-CMakeFiles/stlink.dir/src/flash_loader.c.o: ../src/flash_loader.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/stlink.dir/src/flash_loader.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/flash_loader.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/flash_loader.c
+CMakeFiles/stlink.dir/src/flash_loader.c.o: ../../src/flash_loader.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/stlink.dir/src/flash_loader.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/stlink.dir/src/flash_loader.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/flash_loader.c
 
 CMakeFiles/stlink.dir/src/flash_loader.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stlink.dir/src/flash_loader.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/flash_loader.c > CMakeFiles/stlink.dir/src/flash_loader.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/flash_loader.c > CMakeFiles/stlink.dir/src/flash_loader.c.i
 
 CMakeFiles/stlink.dir/src/flash_loader.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stlink.dir/src/flash_loader.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/flash_loader.c -o CMakeFiles/stlink.dir/src/flash_loader.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/flash_loader.c -o CMakeFiles/stlink.dir/src/flash_loader.c.s
 
 CMakeFiles/stlink.dir/src/flash_loader.c.o.requires:
 
@@ -223,7 +223,7 @@ libstlink.so.1.2.0: CMakeFiles/stlink.dir/build.make
 libstlink.so.1.2.0: /usr/lib/x86_64-linux-gnu/libusb-1.0.so
 libstlink.so.1.2.0: /usr/lib/x86_64-linux-gnu/libusb-1.0.so
 libstlink.so.1.2.0: CMakeFiles/stlink.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C shared library libstlink.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C shared library libstlink.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stlink.dir/link.txt --verbose=$(VERBOSE)
 	$(CMAKE_COMMAND) -E cmake_symlink_library libstlink.so.1.2.0 libstlink.so.1 libstlink.so
 
@@ -252,6 +252,6 @@ CMakeFiles/stlink.dir/clean:
 .PHONY : CMakeFiles/stlink.dir/clean
 
 CMakeFiles/stlink.dir/depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffen/git/integrate_loramote_into_contiki/tools/stlink /home/steffen/git/integrate_loramote_into_contiki/tools/stlink /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mint/Contiki-LoRa/tools/stm32/stlink-src /home/mint/Contiki-LoRa/tools/stm32/stlink-src /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/stlink.dir/depend
 

@@ -78,12 +78,8 @@
    of two, eg 64,128,256,512 etc, for efficiency as PoT's can be optimized well */
 #define CLOCK_CONF_SECOND		128			// max 2048
 #define RTIMER_ARCH_SECOND		1000			// max 8192
-#define RTIMER_CLOCK_DIFF(a,b)		((signed short)((a)-(b)))
-#ifndef CONTIKI3
-  #define RTIMER_CLOCK_LT(a,b)		((signed short)((a)-(b)) < 0)
-#endif
+
 typedef unsigned long clock_time_t;
-typedef unsigned long long rtimer_clock_t;
 
 
 #define CC_CONF_REGISTER_ARGS		0

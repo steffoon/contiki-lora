@@ -1,4 +1,4 @@
-# Install script for directory: /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include
+# Install script for directory: /home/mint/Contiki-LoRa/tools/stm32/stlink-src/include
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -33,21 +33,21 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink.h")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/stlink" TYPE FILE FILES
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/sg.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/commands.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/reg.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/logging.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/backend.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/usb.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/flash_loader.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/chipid.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/include/stlink/mmap.h"
-    "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/include/stlink/version.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/logging.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/usb.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/chipid.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/mmap.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/flash_loader.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/reg.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/sg.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/commands.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/include/stlink/backend.h"
+    "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/include/stlink/version.h"
     )
 endif()
 

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/st-flash.dir/src/tools/flash.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash_opts.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/st-flash.dir/src/tools/flash_opts.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/st-flash.dir/src/tools/flash.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash_opts.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/st-flash.dir/src/tools/flash_opts.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -17,14 +17,14 @@ set(CMAKE_TARGET_DEFINITIONS_C
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/libusb-1.0"
-  "../include"
+  "../../include"
   "include"
-  "../src/mingw"
+  "../../src/mingw"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink.dir/DependInfo.cmake"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

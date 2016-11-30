@@ -20,7 +20,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="${cross_rm} -rf" description="" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1000988672" name="Debug" parent="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug">
+				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="${cross_rm} -rf" description="" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1000988672" name="Debug" parent="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug">
 					<folderInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1000988672." name="/" resourcePath="">
 						<toolChain id="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug.1344046237" name="Cross ARM GCC" superClass="ilg.gnuarmeclipse.managedbuild.cross.toolchain.elf.debug">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.350448918" name="Optimization Level" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.level.none" valueType="enumerated"/>
@@ -46,7 +46,7 @@
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash.2093504918" name="Create flash image" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.createflash" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize.1454870700" name="Print size" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.addtools.printsize" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.608947125" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
-							<builder buildPath="${workspace_loc:/Contiki-LoRa}/Debug" id="ilg.gnuarmeclipse.managedbuild.cross.builder.148572935" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="4" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
+							<builder buildPath="${workspace_loc:/Contiki-LoRa}/Debug" id="ilg.gnuarmeclipse.managedbuild.cross.builder.148572935" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="false" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1888490719" name="Cross ARM GNU Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.1946800512" name="Use preprocessor" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.860171098" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" useByScannerDiscovery="false"/>
@@ -75,8 +75,13 @@
 									<listOptionValue builtIn="false" value="REDIRECT_STDIO"/>
 									<listOptionValue builtIn="false" value="AUTOSTART_ENABLE"/>
 									<listOptionValue builtIn="false" value="&quot;PROJECT_CONF_H=${Project-header}&quot;"/>
+									<listOptionValue builtIn="false" value="STM32L151xB"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1920722107" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1/STM32L1xx_HAL_Driver/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB_Device_Library/Class/CDC/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB_Device_Library/Core/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board/usb/cdc/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1}&quot;"/>
@@ -84,10 +89,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/dev}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/common/CMSIS}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB-FS-Device_Driver/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1/STM32L1xx_StdPeriph_Driver/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board/usb/cdc/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/mac}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/peripherals}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/radio}&quot;"/>
@@ -119,11 +121,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cpu/arm/stm32l1/arm-gcc}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.cref.286533188" name="Cross reference (-Xlinker --cref)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.cref" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other.303776048" name="Other linker flags" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other" useByScannerDiscovery="false" value="-mfloat-abi=soft -nostartfiles --specs=nosys.specs -lc -lm -Wl,--gc-sections -Wl,--undefined=_reset_vector__,--undefined=InterruptVectors,--undefined=_copy_data_init__,--undefined=_clear_bss_init__,--undefined=_end_of_init__" valueType="string"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other.303776048" name="Other linker flags" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.other" useByScannerDiscovery="false" value="-mfloat-abi=soft --specs=nosys.specs -lc -lm -Wl,--gc-sections -Wl,--undefined=_reset_vector__,--undefined=InterruptVectors,--undefined=_copy_data_init__,--undefined=_clear_bss_init__,--undefined=_end_of_init__" valueType="string"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile.1553428231" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.scriptfile" useByScannerDiscovery="false" valueType="stringList">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cpu/arm/stm32l1/arm-gcc/stm32l1xx_md_flash.ld}&quot;"/>
 								</option>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart.2052347286" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart.2052347286" name="Do not use standard start files (-nostartfiles)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.nostart" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.usenewlibnano.931596420" name="Use newlib-nano (--specs=nano.specs)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.linker.usenewlibnano" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input.346267339" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -184,10 +186,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/dev}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/common/CMSIS}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB-FS-Device_Driver/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1/STM32L1xx_StdPeriph_Driver/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/board/usb/cdc/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/mac}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/peripherals}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/platform/loramote/LoRaMac/radio}&quot;"/>
@@ -206,6 +205,9 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/ip}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/core/net/ipv6}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/examples/ipv6/rpl-border-router}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/arm/stm32l1/STM32L1xx_HAL_Driver/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB_Device_Library/Class/CDC/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Contiki-LoRa/cpu/stm32_common/STM32_USB_Device_Library/Core/Inc}&quot;"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.464686660" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 							</tool>
@@ -268,7 +270,7 @@
 					<sourceEntries>
 						<entry excluding="core/net/llsec/ccm-star-packetbuf.c|core/net/llsec/anti-replay.c|core/net/llsec/noncoresec|core/net/ipv6/multicast|core/net/http-socket|core/lib/strncasecmp|core/sys/compower.c|core/sys/arg.c|core/sys/mt.c|core/ctk|core/cfs|core/loader|core/net/ipv4|core/net/ip64|core/net/mac/tsch|core/net/mac/sicslowmac|core/net/mac/cxmac|core/net/rime|core/net/rime/multihop.c|core/net/rime/collect.c|regression-tests|platform|lib|examples|doc|dev|cpu|apps|tools" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="uart-arch.c|system_stm32l1xx.c|rtc-arch.c|uip-arch.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="cpu/arm/stm32l1"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="cpu/stm32_common"/>
+						<entry excluding="STM32_USB_Device_Library/Class/DFU" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="cpu/stm32_common"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="examples/ipv6/rpl-border-router"/>
 						<entry excluding="LoRaMac/board/usb/cdc/src/usb_endp.c|LoRaMac/mac|LoRaMac/board/gps-board.c|LoRaMac/peripherals/mma8451.c|LoRaMac/peripherals/mag3110.c|LoRaMac/system/gps.c|LoRaMac/system/eeprom.c|LoRaMac/system/crypto|LoRaMac/system/delay.c|LoRaMac/board/usb-dfu-board.c|LoRaMac/board/usb/dfu|LoRaMac/peripherals/selector.c|LoRaMac/radio/sx1276" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="platform/loramote"/>
 					</sourceEntries>

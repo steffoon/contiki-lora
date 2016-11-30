@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 # Include any dependencies generated for this target.
 include src/gdbserver/CMakeFiles/st-util.dir/depend.make
@@ -58,17 +58,17 @@ include src/gdbserver/CMakeFiles/st-util.dir/progress.make
 include src/gdbserver/CMakeFiles/st-util.dir/flags.make
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o: src/gdbserver/CMakeFiles/st-util.dir/flags.make
-src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o: ../src/gdbserver/gdb-remote.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/st-util.dir/gdb-remote.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-remote.c
+src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o: ../../src/gdbserver/gdb-remote.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/st-util.dir/gdb-remote.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-remote.c
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/st-util.dir/gdb-remote.c.i"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-remote.c > CMakeFiles/st-util.dir/gdb-remote.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-remote.c > CMakeFiles/st-util.dir/gdb-remote.c.i
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/st-util.dir/gdb-remote.c.s"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-remote.c -o CMakeFiles/st-util.dir/gdb-remote.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-remote.c -o CMakeFiles/st-util.dir/gdb-remote.c.s
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o.requires:
 
@@ -82,17 +82,17 @@ src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o.provides.build: src/gdbserve
 
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o: src/gdbserver/CMakeFiles/st-util.dir/flags.make
-src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o: ../src/gdbserver/gdb-server.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/st-util.dir/gdb-server.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-server.c
+src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o: ../../src/gdbserver/gdb-server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/st-util.dir/gdb-server.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-server.c
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/st-util.dir/gdb-server.c.i"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-server.c > CMakeFiles/st-util.dir/gdb-server.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-server.c > CMakeFiles/st-util.dir/gdb-server.c.i
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/st-util.dir/gdb-server.c.s"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-server.c -o CMakeFiles/st-util.dir/gdb-server.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-server.c -o CMakeFiles/st-util.dir/gdb-server.c.s
 
 src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o.requires:
 
@@ -106,17 +106,17 @@ src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o.provides.build: src/gdbserve
 
 
 src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o: src/gdbserver/CMakeFiles/st-util.dir/flags.make
-src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o: ../src/gdbserver/semihosting.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/st-util.dir/semihosting.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/semihosting.c
+src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o: ../../src/gdbserver/semihosting.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/st-util.dir/semihosting.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/semihosting.c
 
 src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/st-util.dir/semihosting.c.i"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/semihosting.c > CMakeFiles/st-util.dir/semihosting.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/semihosting.c > CMakeFiles/st-util.dir/semihosting.c.i
 
 src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/st-util.dir/semihosting.c.s"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/semihosting.c -o CMakeFiles/st-util.dir/semihosting.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/semihosting.c -o CMakeFiles/st-util.dir/semihosting.c.s
 
 src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o.requires:
 
@@ -145,8 +145,8 @@ src/gdbserver/st-util: src/gdbserver/CMakeFiles/st-util.dir/build.make
 src/gdbserver/st-util: libstlink.so.1.2.0
 src/gdbserver/st-util: /usr/lib/x86_64-linux-gnu/libusb-1.0.so
 src/gdbserver/st-util: src/gdbserver/CMakeFiles/st-util.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable st-util"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/st-util.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable st-util"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/st-util.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/gdbserver/CMakeFiles/st-util.dir/build: src/gdbserver/st-util
@@ -160,10 +160,10 @@ src/gdbserver/CMakeFiles/st-util.dir/requires: src/gdbserver/CMakeFiles/st-util.
 .PHONY : src/gdbserver/CMakeFiles/st-util.dir/requires
 
 src/gdbserver/CMakeFiles/st-util.dir/clean:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver && $(CMAKE_COMMAND) -P CMakeFiles/st-util.dir/cmake_clean.cmake
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver && $(CMAKE_COMMAND) -P CMakeFiles/st-util.dir/cmake_clean.cmake
 .PHONY : src/gdbserver/CMakeFiles/st-util.dir/clean
 
 src/gdbserver/CMakeFiles/st-util.dir/depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffen/git/integrate_loramote_into_contiki/tools/stlink /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver/CMakeFiles/st-util.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mint/Contiki-LoRa/tools/stm32/stlink-src /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver/CMakeFiles/st-util.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/gdbserver/CMakeFiles/st-util.dir/depend
 

@@ -26,9 +26,7 @@ CONTIKI_CPU_ARCH = \
 		clock.c				\
 		watchdog.c			\
 		lpm-arch.c			\
-		rtimer-arch.c			\
-		rtc-arch.c			\
-		uart-arch.c
+		rtimer-arch.c			
 
 ifdef GCC 
   CONTIKI_CPU_PORT = syscalls.c
@@ -45,11 +43,13 @@ ELFLOADER =
 
 # Source files: STM32L1 libraries
 CONTIKI_MCU_DIRS = \
-		STM32L1xx_StdPeriph_Driver/inc				\
-		STM32L1xx_StdPeriph_Driver/src				\
+		STM32L1xx_HAL_Driver/Inc				\
+		STM32L1xx_HAL_Driver/Src				\
 		../../stm32_common/					\
-		../../stm32_common/STM32_USB-FS-Device_Driver/inc	\
-		../../stm32_common/STM32_USB-FS-Device_Driver/src
+		../../stm32_common/STM32_USB_Device_Library/Core/Inc	\
+		../../stm32_common/STM32_USB_Device_Library/Core/Src	\
+		../../stm32_common/STM32_USB_Device_Library/Class/CDC/Inc	\
+		../../stm32_common/STM32_USB_Device_Library/Class/CDC/Src
 
 FULL_MCU_DIRS = ${wildcard ${addprefix $(CONTIKI_CPU)/, $(CONTIKI_MCU_DIRS)}}
 CONTIKI_MCU_SOURCEFILES = ${foreach d, $(FULL_MCU_DIRS), ${subst ${d}/,,${wildcard $(d)/*.c}}}
@@ -81,8 +81,9 @@ F_CPU = 32000000
 CFLAGS += \
 	-DHSE_VALUE=$(F_CPU)ul		\
 	-DUSE_STDPERIPH_DRIVER		\
-	-DSTM32L1XX_MD			\
-	-DIAR_ARM_CM3
+	-DSTM32L1XX_MD				\
+	-DIAR_ARM_CM3				\
+	-DSTM32L151xB
 
 
 # IAR ---------------------------------------------------------------------------
@@ -126,18 +127,20 @@ CFLAGS += \
 	-Wno-unused-variable					\
 	-Wno-unused-but-set-variable
 
+LDLIBS = -lc -lm
+
 LDFLAGS += \
 	-L$(CONTIKI_CPU)/arm-gcc				\
 	-T$(LDSCRIPT)						\
 	-mcpu=cortex-m3						\
 	-mthumb							\
 	-mfloat-abi=soft					\
-	-nostartfiles						\
 	--specs=nosys.specs					\
 	-Wl,-Map=$(OBJECTDIR)/contiki-$(TARGET).map,--cref	\
 	$(LDLIBS)
 
-LDLIBS = -lc -lm
+#	-nostartfiles						\
+
 
 ifeq ($(strip $(REDIRECT_STDIO)),1)
   CFLAGS += -DREDIRECT_STDIO

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/flash.dir/depend.make
@@ -58,17 +58,17 @@ include tests/CMakeFiles/flash.dir/progress.make
 include tests/CMakeFiles/flash.dir/flags.make
 
 tests/CMakeFiles/flash.dir/flash.c.o: tests/CMakeFiles/flash.dir/flags.make
-tests/CMakeFiles/flash.dir/flash.c.o: ../tests/flash.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/flash.dir/flash.c.o"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flash.dir/flash.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/tests/flash.c
+tests/CMakeFiles/flash.dir/flash.c.o: ../../tests/flash.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/flash.dir/flash.c.o"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flash.dir/flash.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/tests/flash.c
 
 tests/CMakeFiles/flash.dir/flash.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flash.dir/flash.c.i"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/tests/flash.c > CMakeFiles/flash.dir/flash.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/tests/flash.c > CMakeFiles/flash.dir/flash.c.i
 
 tests/CMakeFiles/flash.dir/flash.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flash.dir/flash.c.s"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/tests/flash.c -o CMakeFiles/flash.dir/flash.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/tests/flash.c -o CMakeFiles/flash.dir/flash.c.s
 
 tests/CMakeFiles/flash.dir/flash.c.o.requires:
 
@@ -82,17 +82,17 @@ tests/CMakeFiles/flash.dir/flash.c.o.provides.build: tests/CMakeFiles/flash.dir/
 
 
 tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o: tests/CMakeFiles/flash.dir/flags.make
-tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o: ../src/tools/flash_opts.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o   -c /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash_opts.c
+tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o: ../../src/tools/flash_opts.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o   -c /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash_opts.c
 
 tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flash.dir/__/src/tools/flash_opts.c.i"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash_opts.c > CMakeFiles/flash.dir/__/src/tools/flash_opts.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash_opts.c > CMakeFiles/flash.dir/__/src/tools/flash_opts.c.i
 
 tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flash.dir/__/src/tools/flash_opts.c.s"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash_opts.c -o CMakeFiles/flash.dir/__/src/tools/flash_opts.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash_opts.c -o CMakeFiles/flash.dir/__/src/tools/flash_opts.c.s
 
 tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o.requires:
 
@@ -119,8 +119,8 @@ tests/flash: tests/CMakeFiles/flash.dir/build.make
 tests/flash: libstlink.so.1.2.0
 tests/flash: /usr/lib/x86_64-linux-gnu/libusb-1.0.so
 tests/flash: tests/CMakeFiles/flash.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable flash"
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flash.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable flash"
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flash.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/flash.dir/build: tests/flash
@@ -133,10 +133,10 @@ tests/CMakeFiles/flash.dir/requires: tests/CMakeFiles/flash.dir/__/src/tools/fla
 .PHONY : tests/CMakeFiles/flash.dir/requires
 
 tests/CMakeFiles/flash.dir/clean:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/flash.dir/cmake_clean.cmake
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests && $(CMAKE_COMMAND) -P CMakeFiles/flash.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/flash.dir/clean
 
 tests/CMakeFiles/flash.dir/depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffen/git/integrate_loramote_into_contiki/tools/stlink /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/tests /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests/CMakeFiles/flash.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mint/Contiki-LoRa/tools/stm32/stlink-src /home/mint/Contiki-LoRa/tools/stm32/stlink-src/tests /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests/CMakeFiles/flash.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/flash.dir/depend
 

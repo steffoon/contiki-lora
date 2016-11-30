@@ -48,24 +48,24 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : test/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -77,17 +77,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
 
 # Special rule for the target install
 install: preinstall
@@ -122,6 +111,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -136,7 +136,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CPackSourceConfig.cmake
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -144,27 +144,16 @@ package_source/fast: package_source
 
 .PHONY : package_source/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/tests/CMakeFiles/progress.marks
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles 0
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_progress_start /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/tests/CMakeFiles/progress.marks
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -174,22 +163,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tests/CMakeFiles/sg.dir/rule:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sg.dir/rule
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/sg.dir/rule
 .PHONY : tests/CMakeFiles/sg.dir/rule
 
 # Convenience name for target.
@@ -199,27 +188,12 @@ sg: tests/CMakeFiles/sg.dir/rule
 
 # fast build rule for target.
 sg/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/build
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/build
 .PHONY : sg/fast
 
 # Convenience name for target.
-tests/CMakeFiles/flash.dir/rule:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/flash.dir/rule
-.PHONY : tests/CMakeFiles/flash.dir/rule
-
-# Convenience name for target.
-flash: tests/CMakeFiles/flash.dir/rule
-
-.PHONY : flash
-
-# fast build rule for target.
-flash/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/build
-.PHONY : flash/fast
-
-# Convenience name for target.
 tests/CMakeFiles/usb.dir/rule:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/usb.dir/rule
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/usb.dir/rule
 .PHONY : tests/CMakeFiles/usb.dir/rule
 
 # Convenience name for target.
@@ -229,8 +203,23 @@ usb: tests/CMakeFiles/usb.dir/rule
 
 # fast build rule for target.
 usb/fast:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/build
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/build
 .PHONY : usb/fast
+
+# Convenience name for target.
+tests/CMakeFiles/flash.dir/rule:
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/flash.dir/rule
+.PHONY : tests/CMakeFiles/flash.dir/rule
+
+# Convenience name for target.
+flash: tests/CMakeFiles/flash.dir/rule
+
+.PHONY : flash
+
+# fast build rule for target.
+flash/fast:
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/build
+.PHONY : flash/fast
 
 __/src/tools/flash_opts.o: __/src/tools/flash_opts.c.o
 
@@ -238,7 +227,7 @@ __/src/tools/flash_opts.o: __/src/tools/flash_opts.c.o
 
 # target to build an object file
 __/src/tools/flash_opts.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.o
 .PHONY : __/src/tools/flash_opts.c.o
 
 __/src/tools/flash_opts.i: __/src/tools/flash_opts.c.i
@@ -247,7 +236,7 @@ __/src/tools/flash_opts.i: __/src/tools/flash_opts.c.i
 
 # target to preprocess a source file
 __/src/tools/flash_opts.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.i
 .PHONY : __/src/tools/flash_opts.c.i
 
 __/src/tools/flash_opts.s: __/src/tools/flash_opts.c.s
@@ -256,7 +245,7 @@ __/src/tools/flash_opts.s: __/src/tools/flash_opts.c.s
 
 # target to generate assembly for a file
 __/src/tools/flash_opts.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/__/src/tools/flash_opts.c.s
 .PHONY : __/src/tools/flash_opts.c.s
 
 flash.o: flash.c.o
@@ -265,7 +254,7 @@ flash.o: flash.c.o
 
 # target to build an object file
 flash.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/flash.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/flash.c.o
 .PHONY : flash.c.o
 
 flash.i: flash.c.i
@@ -274,7 +263,7 @@ flash.i: flash.c.i
 
 # target to preprocess a source file
 flash.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/flash.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/flash.c.i
 .PHONY : flash.c.i
 
 flash.s: flash.c.s
@@ -283,7 +272,7 @@ flash.s: flash.c.s
 
 # target to generate assembly for a file
 flash.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/flash.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/flash.dir/build.make tests/CMakeFiles/flash.dir/flash.c.s
 .PHONY : flash.c.s
 
 sg.o: sg.c.o
@@ -292,7 +281,7 @@ sg.o: sg.c.o
 
 # target to build an object file
 sg.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/sg.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/sg.c.o
 .PHONY : sg.c.o
 
 sg.i: sg.c.i
@@ -301,7 +290,7 @@ sg.i: sg.c.i
 
 # target to preprocess a source file
 sg.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/sg.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/sg.c.i
 .PHONY : sg.c.i
 
 sg.s: sg.c.s
@@ -310,7 +299,7 @@ sg.s: sg.c.s
 
 # target to generate assembly for a file
 sg.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/sg.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/sg.dir/build.make tests/CMakeFiles/sg.dir/sg.c.s
 .PHONY : sg.c.s
 
 usb.o: usb.c.o
@@ -319,7 +308,7 @@ usb.o: usb.c.o
 
 # target to build an object file
 usb.c.o:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/usb.c.o
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/usb.c.o
 .PHONY : usb.c.o
 
 usb.i: usb.c.i
@@ -328,7 +317,7 @@ usb.i: usb.c.i
 
 # target to preprocess a source file
 usb.c.i:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/usb.c.i
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/usb.c.i
 .PHONY : usb.c.i
 
 usb.s: usb.c.s
@@ -337,7 +326,7 @@ usb.s: usb.c.s
 
 # target to generate assembly for a file
 usb.c.s:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/usb.c.s
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(MAKE) -f tests/CMakeFiles/usb.dir/build.make tests/CMakeFiles/usb.dir/usb.c.s
 .PHONY : usb.c.s
 
 # Help Target
@@ -346,18 +335,17 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... test"
+	@echo "... edit_cache"
 	@echo "... sg"
 	@echo "... install/local"
-	@echo "... package"
-	@echo "... flash"
 	@echo "... usb"
 	@echo "... install"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... flash"
+	@echo "... package"
 	@echo "... rebuild_cache"
 	@echo "... package_source"
-	@echo "... edit_cache"
 	@echo "... __/src/tools/flash_opts.o"
 	@echo "... __/src/tools/flash_opts.i"
 	@echo "... __/src/tools/flash_opts.s"
@@ -381,6 +369,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

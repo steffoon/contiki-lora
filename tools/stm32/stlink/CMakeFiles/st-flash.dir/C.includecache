@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/stlink.h
+../../include/stlink.h
 stdint.h
 -
 stddef.h
@@ -14,63 +14,63 @@ stddef.h
 stdbool.h
 -
 stlink/backend.h
-../include/stlink/backend.h
+../../include/stlink/backend.h
 stlink/sg.h
-../include/stlink/sg.h
+../../include/stlink/sg.h
 stlink/usb.h
-../include/stlink/usb.h
+../../include/stlink/usb.h
 stlink/reg.h
-../include/stlink/reg.h
+../../include/stlink/reg.h
 stlink/commands.h
-../include/stlink/commands.h
+../../include/stlink/commands.h
 stlink/chipid.h
-../include/stlink/chipid.h
+../../include/stlink/chipid.h
 stlink/flash_loader.h
-../include/stlink/flash_loader.h
+../../include/stlink/flash_loader.h
 stlink/version.h
-../include/stlink/version.h
+../../include/stlink/version.h
 
-../include/stlink/backend.h
+../../include/stlink/backend.h
 
-../include/stlink/chipid.h
+../../include/stlink/chipid.h
 
-../include/stlink/commands.h
+../../include/stlink/commands.h
 
-../include/stlink/flash_loader.h
+../../include/stlink/flash_loader.h
 stdint.h
 -
 stddef.h
 -
 stlink.h
-../include/stlink/stlink.h
+../../include/stlink/stlink.h
 
-../include/stlink/logging.h
+../../include/stlink/logging.h
 
-../include/stlink/reg.h
+../../include/stlink/reg.h
 
-../include/stlink/sg.h
+../../include/stlink/sg.h
 libusb.h
 -
 stlink.h
-../include/stlink/stlink.h
+../../include/stlink/stlink.h
 
-../include/stlink/tools/flash.h
+../../include/stlink/tools/flash.h
 stdint.h
 -
 stlink.h
 -
 
-../include/stlink/usb.h
+../../include/stlink/usb.h
 stdbool.h
 -
 libusb.h
 -
 stlink.h
-../include/stlink/stlink.h
+../../include/stlink/stlink.h
 stlink/logging.h
-../include/stlink/stlink/logging.h
+../../include/stlink/stlink/logging.h
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash.c
 signal.h
 -
 stdio.h
@@ -86,7 +86,7 @@ stlink.h
 stlink/tools/flash.h
 -
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/tools/flash_opts.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/tools/flash_opts.c
 stlink/tools/flash.h
 -
 stdlib.h

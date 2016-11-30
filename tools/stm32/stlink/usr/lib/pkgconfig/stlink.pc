@@ -1,10 +1,10 @@
 deb_host_multiarch=
 Name: stlink
 Description: Open source version of the STMicroelectronics Stlink Tools
-Version: 1.2.0-129-gee3f7a1
+Version: 1.2.0-147-g3de5cf0
 Requires: libusb-1.0
 prefix=/usr/local
-includedir=${prefix}/include/${deb_host_multiarch}/stlink-1.2.0-129-gee3f7a1
+includedir=${prefix}/include/${deb_host_multiarch}/stlink-1.2.0-147-g3de5cf0
 libdir=${prefix}/lib/${deb_host_multiarch}
 Libs: -L${libdir} -l:libstlink.so.1
 Cflags: -I${includedir}

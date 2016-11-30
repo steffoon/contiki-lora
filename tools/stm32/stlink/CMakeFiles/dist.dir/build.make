@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink
+CMAKE_SOURCE_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build
+CMAKE_BINARY_DIR = /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release
 
 # Utility rule file for dist.
 
@@ -71,6 +71,6 @@ CMakeFiles/dist.dir/clean:
 .PHONY : CMakeFiles/dist.dir/clean
 
 CMakeFiles/dist.dir/depend:
-	cd /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffen/git/integrate_loramote_into_contiki/tools/stlink /home/steffen/git/integrate_loramote_into_contiki/tools/stlink /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build /home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/dist.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mint/Contiki-LoRa/tools/stm32/stlink-src /home/mint/Contiki-LoRa/tools/stm32/stlink-src /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release /home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/dist.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dist.dir/depend
 

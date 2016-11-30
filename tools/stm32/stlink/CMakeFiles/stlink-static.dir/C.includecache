@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/stlink.h
+../../include/stlink.h
 stdint.h
 -
 stddef.h
@@ -14,67 +14,67 @@ stddef.h
 stdbool.h
 -
 stlink/backend.h
-../include/stlink/backend.h
+../../include/stlink/backend.h
 stlink/sg.h
-../include/stlink/sg.h
+../../include/stlink/sg.h
 stlink/usb.h
-../include/stlink/usb.h
+../../include/stlink/usb.h
 stlink/reg.h
-../include/stlink/reg.h
+../../include/stlink/reg.h
 stlink/commands.h
-../include/stlink/commands.h
+../../include/stlink/commands.h
 stlink/chipid.h
-../include/stlink/chipid.h
+../../include/stlink/chipid.h
 stlink/flash_loader.h
-../include/stlink/flash_loader.h
+../../include/stlink/flash_loader.h
 stlink/version.h
-../include/stlink/version.h
+../../include/stlink/version.h
 
-../include/stlink/backend.h
+../../include/stlink/backend.h
 
-../include/stlink/chipid.h
+../../include/stlink/chipid.h
 
-../include/stlink/commands.h
+../../include/stlink/commands.h
 
-../include/stlink/flash_loader.h
+../../include/stlink/flash_loader.h
 stdint.h
 -
 stddef.h
 -
 stlink.h
-../include/stlink/stlink.h
+../../include/stlink/stlink.h
 
-../include/stlink/logging.h
+../../include/stlink/logging.h
 
-../include/stlink/mmap.h
+../../include/stlink/mmap.h
 sys/mman.h
 -
 
-../include/stlink/reg.h
+../../include/stlink/reg.h
 
-../include/stlink/sg.h
+../../include/stlink/sg.h
 libusb.h
 -
 stlink.h
-../include/stlink/stlink.h
+../../include/stlink/stlink.h
 
-../include/stlink/usb.h
+../../include/stlink/usb.h
 stdbool.h
 -
 libusb.h
 -
 stlink.h
-../include/stlink/stlink.h
+../../include/stlink/stlink.h
 stlink/logging.h
-../include/stlink/stlink/logging.h
+../../include/stlink/stlink/logging.h
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/chipid.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/chipid.c
 stlink.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink.h
 stlink/chipid.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink/chipid.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink/chipid.h
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/common.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/common.c
 stdarg.h
 -
 stdio.h
@@ -94,15 +94,15 @@ sys/types.h
 sys/stat.h
 -
 stlink.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink.h
 stlink/mmap.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink/mmap.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink/mmap.h
 stlink/logging.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink/logging.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink/logging.h
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/flash_loader.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/flash_loader.c
 stlink.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink.h
 stdio.h
 -
 string.h
@@ -110,7 +110,7 @@ string.h
 unistd.h
 -
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/logging.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/logging.c
 stddef.h
 -
 stdio.h
@@ -122,9 +122,9 @@ stdarg.h
 time.h
 -
 stlink/logging.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink/logging.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink/logging.h
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/sg.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/sg.c
 assert.h
 -
 stdio.h
@@ -136,11 +136,11 @@ stdlib.h
 sys/types.h
 -
 stlink.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink.h
 stlink/logging.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink/logging.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink/logging.h
 
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/usb.c
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/usb.c
 stdio.h
 -
 stdlib.h
@@ -160,7 +160,7 @@ errno.h
 unistd.h
 -
 stlink.h
-/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/stlink.h
+/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/stlink.h
 
 /usr/include/libusb-1.0/libusb.h
 stdint.h

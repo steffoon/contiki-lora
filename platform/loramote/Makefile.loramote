@@ -17,11 +17,12 @@ OPENOCD = $(STM32_TOOLS)/openocd
 SERIALDUMP = $(STM32_TOOLS)/serialdump
 
 
-CONTIKIVERSIONX:=${shell git --git-dir ${CONTIKI}/.git describe --tags --always}
-ifneq ($(findstring 3.,$(CONTIKIVERSIONX)),)
+#Not correct git repository to check!
+#CONTIKIVERSIONX:=${shell git --git-dir ${CONTIKI}/.git describe --tags --always}
+#ifneq ($(findstring 3.,$(CONTIKIVERSIONX)),)
   CONTIKI3 = 1
   CFLAGS += -DCONTIKI3=1
-endif
+#endif
 
 ifeq ($(strip $(VERBOSE)),1)
   V ?= 1
@@ -43,17 +44,18 @@ else
   MODULES += core/net/ip core/net/ipv6 core/net/rime core/net/rpl
 endif
 
-CONTIKI_TARGET_DIRS = . apps dev LoRaMac net \
-			LoRaMac/board LoRaMac/mac LoRaMac/peripherals LoRaMac/system LoRaMac/system/crypto \
-			LoRaMac/board/usb/cdc/inc LoRaMac/board/usb/cdc/src \
-			LoRaMac/radio LoRaMac/radio/sx1272
+CONTIKI_TARGET_DIRS = . dev LoRaMac net 									\
+			LoRaMac/board LoRaMac/mac LoRaMac/peripherals LoRaMac/system 	\
+			LoRaMac/board/usb/cdc/inc LoRaMac/board/usb/cdc/src 			\
+			LoRaMac/radio LoRaMac/radio/sx1272								
+			
 
 CONTIKI_TARGET_MAIN = contiki-loramote-main.c
 
 FULL_TARGET_DIRS = ${wildcard ${addprefix $(CONTIKI)/platform/loramote/, $(CONTIKI_TARGET_DIRS)}}
 CONTIKI_TARGET_SOURCEFILES = altitude-sensor.c battery-sensor.c button-sensor.c leds-arch.c lora-contiki-interface.c pressure-sensor.c radio-sensor.c serial-line-arch.c slip-arch.c temperature-sensor.c \
-				adc-board.c board.c gpio-board.c i2c-board.c spi-board.c rtc-board.c sx1272-board.c timer-board.c uart-board.c uart-usb-board.c usb-cdc-board.c \
-				usb_desc.c usb_endp.c usb_istr.c usb_prop.c usb_pwr.c \
+				adc-board.c board.c gpio-board.c i2c-board.c spi-board.c rtc-board.c sx1272-board.c uart-board.c uart-usb-board.c  \
+				usbd_desc.c usbd_conf.c usbd_desc.c usbd_cdc_if.c usbd_cdc.c usbd_core.c usbd_ctlreq.c usbd_ioreq.c \
 				gpio-ioe.c mpl3115.c sx1509.c sx9500.c \
 				adc.c fifo.c gpio.c i2c.c loratimer.c uart.c \
 				sx1272.c lora-radio-arch.c

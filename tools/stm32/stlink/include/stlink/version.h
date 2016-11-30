@@ -1,7 +1,7 @@
 #ifndef STLINK_VERSION_H_
 #define STLINK_VERSION_H_
 
-#define STLINK_VERSION       "1.2.0-129-gee3f7a1"
+#define STLINK_VERSION       "1.2.0-147-g3de5cf0"
 #define STLINK_VERSION_MAJOR 1
 #define STLINK_VERSION_MINOR 2
 #define STLINK_VERSION_PATCH 0

@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-remote.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/gdb-server.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o"
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/src/gdbserver/semihosting.c" "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-remote.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver/CMakeFiles/st-util.dir/gdb-remote.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/gdb-server.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver/CMakeFiles/st-util.dir/gdb-server.c.o"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/src/gdbserver/semihosting.c" "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/src/gdbserver/CMakeFiles/st-util.dir/semihosting.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -18,14 +18,14 @@ set(CMAKE_TARGET_DEFINITIONS_C
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/libusb-1.0"
-  "../include"
+  "../../include"
   "include"
-  "../src/mingw"
+  "../../src/mingw"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/steffen/git/integrate_loramote_into_contiki/tools/stlink/build/CMakeFiles/stlink.dir/DependInfo.cmake"
+  "/home/mint/Contiki-LoRa/tools/stm32/stlink-src/build/Release/CMakeFiles/stlink.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
