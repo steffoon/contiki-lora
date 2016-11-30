@@ -1,5 +1,5 @@
 *.a
-*.bin
+# *.bin   Include for loramote_bootloader.bin!
 *.map
 *.png
 *.log
@@ -130,3 +130,5 @@ LOG_OPENOCD
 *.jlink
 *.nrf52dk
 /Debug/
+/sk-im880a/
+/Loramote/
