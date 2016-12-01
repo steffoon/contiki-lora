@@ -55,8 +55,8 @@
 #define PLATFORM_HAS_LIGHT		0
 
 
-#define F_CPU				32000000ul		// HSE clock frequency
-#define F_LSI				37000ul			// LSI clock frequency
+//#define F_CPU				32000000ul		// HSE clock frequency
+//#define F_LSI				37000ul			// LSI clock frequency
 #define F_LSE				32768ul			// LSE clock frequency
 
 #define ENABLE_WATCHDOG			0			// Start watchdog

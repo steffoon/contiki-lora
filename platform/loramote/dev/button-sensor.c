@@ -74,9 +74,10 @@ static void init(void)
   SX9500Write(SX9500_REG_IRQMSK, 0x10);
   SX9500Write(SX9500_REG_IRQSRC, 0x10);
   
-  do {
-    SX9500Read(SX9500_REG_IRQSRC, &status);
-  }while((status & 0x10) == 0x00); /* While compensation for CS0 is pending */
+  //HANGS! LoraMAC based SX9500 code changed?
+  //do {
+  //  SX9500Read(SX9500_REG_IRQSRC, &status);
+  //}while((status & 0x10) == 0x00); /* While compensation for CS0 is pending */
 
 
   /* Enable SX9500 close proximity interrupt (NIRQ) */

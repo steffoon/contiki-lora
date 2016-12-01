@@ -133,8 +133,9 @@ void BoardInitMcu_Contiki( void )
 
     AdcInit( &Adc, BAT_LEVEL );
 
-    SpiInit( &SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
-    SX1272IoInit( );
+    //SpiInit( &SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
+    //SX1272IoInit( );
+    //Happens in Lora Radio Arch
 
 #if defined( USE_DEBUG_PINS )
         GpioInit( &DbgPin1, CON_EXT_1, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
