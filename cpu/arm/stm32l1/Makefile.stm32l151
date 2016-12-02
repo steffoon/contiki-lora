@@ -29,14 +29,13 @@ CONTIKI_CPU_ARCH = \
 		rtimer-arch.c			
 
 ifdef GCC 
-  CONTIKI_CPU_PORT = syscalls.c
+  CONTIKI_CPU_PORT = #syscalls.c
   STM32_TOOLS ?= $(CONTIKI)/tools/stm32
   GCC_BINS ?= $(STM32_TOOLS)/gcc-arm-none-eabi/bin
 else
   CONTIKI_CPU_PORT = 
 endif
 
-UIPDRIVERS = uip-arch.c
 
 # To be implemented
 ELFLOADER = 
@@ -64,7 +63,7 @@ endif
 
 # Include all files above
 ssubst = ${patsubst %.s,%.o,${patsubst %.s79,%.o,$(1)}}
-CONTIKI_SOURCEFILES += $(PROP_SYS_ARCH_C) $(CONTIKI_CPU_ARCH) $(CONTIKI_CPU_PORT) $(ELFLOADER) $(UIPDRIVERS) $(CONTIKI_MCU_SOURCEFILES)
+CONTIKI_SOURCEFILES += $(PROP_SYS_ARCH_C) $(CONTIKI_CPU_ARCH) $(CONTIKI_CPU_PORT) $(ELFLOADER)  $(CONTIKI_MCU_SOURCEFILES)
 PROJECT_OBJECTFILES += ${addprefix $(OBJECTDIR)/,$(CONTIKI_TARGET_MAIN:.c=.o)}
 PROJECT_OBJECTFILES += ${addprefix $(OBJECTDIR)/,${call ssubst, $(PROP_SYS_ARCH_S)}}
 #CONTIKI_OBJECTFILES += ${addprefix $(OBJECTDIR)/,${call ssubst, $(PROP_SYS_ARCH_S)}}
@@ -72,23 +71,10 @@ PROJECT_OBJECTFILES += ${addprefix $(OBJECTDIR)/,${call ssubst, $(PROP_SYS_ARCH_
 
 # Defines common for IAR and GCC ------------------------------------------------
 
-# Set CPU speed in Hz, NB this might have unexpected side-effects if not at 32
-# Mhz as it is not immediately clear how specialized the startup code etc is.
-# That being said, setting to 24MHz seems to work fine, looking at Contiki clocks
-# at least.
-F_CPU = 32000000
-
 CFLAGS += \
-	-DHSE_VALUE=$(F_CPU)ul		\
-	-DUSE_STDPERIPH_DRIVER		\
-	-DSTM32L1XX_MD				\
-	-DIAR_ARM_CM3				\
-	-DSTM32L151xB
-
-
-# IAR ---------------------------------------------------------------------------
-
-# GCC ---------------------------------------------------------------------------
+	-DUSE_HAL_DRIVER		\
+	-DSTM32L151xB			\
+	-DLOW_POWER_MODE_ENABLE
 
 ### Compiler definitions
 GCC	= 1
@@ -105,29 +91,26 @@ GDB	= $(GCC_BINS)/arm-none-eabi-gdb
 
 ASFLAGS += -mcpu=cortex-m3 -mthumb
 
-# This platform wields a STM32L151C8 medium-density device
-CFLAGS += -DSTM32L1XX_MD=1
-
 CFLAGS += \
-	-I.							\
+	-I.									\
 	-I$(CONTIKI)/core					\
 	-I$(CONTIKI_CPU)					\
-	-I$(CONTIKI)/platform/$(TARGET)				\
-	${addprefix -I,$(APPDIRS)}				\
-	${addprefix -I,$(CONTIKI_CPU_DIRS)}			\
-	-Wall -g -g2						\
-	-DWITH_UIP -DWITH_ASCII					\
+	-I$(CONTIKI)/platform/$(TARGET)		\
+	${addprefix -I,$(APPDIRS)}			\
+	${addprefix -I,$(CONTIKI_CPU_DIRS)}	\
+	-Wall -g						\
 	-mcpu=cortex-m3						\
-	-mthumb							\
-	-mfix-cortex-m3-ldrd					\
-	-std=gnu99						\
-	-Wno-strict-aliasing					\
+	-mthumb								\
+	-mfix-cortex-m3-ldrd				\
+	-std=gnu99							\
+	-Wno-strict-aliasing				\
 	-Wno-pointer-sign					\
-	-Wno-unused-function					\
-	-Wno-unused-variable					\
+	-Wno-unused-function				\
+	-Wno-unused-variable				\
 	-Wno-unused-but-set-variable
 
-LDLIBS = -lc -lm
+
+LDLIBS = -Wl,--no-whole-archive -lc -lm
 
 LDFLAGS += \
 	-L$(CONTIKI_CPU)/arm-gcc				\
@@ -136,24 +119,19 @@ LDFLAGS += \
 	-mthumb							\
 	-mfloat-abi=soft					\
 	--specs=nosys.specs					\
-	-Wl,-Map=$(OBJECTDIR)/contiki-$(TARGET).map,--cref	\
-	$(LDLIBS)
+	-Wl,-Map=$(OBJECTDIR)/contiki-$(TARGET).map -Xlinker --cref	\
+	-g -Os	\
+	-Wl,--whole-archive
 
-#	-nostartfiles						\
 
-
-ifeq ($(strip $(REDIRECT_STDIO)),1)
   CFLAGS += -DREDIRECT_STDIO
-else  #REDIRECT_STDIO
-  LDFLAGS += --specs=rdimon.specs
-  LDLIBS += -lrdimon
-endif  #REDIRECT_STDIO
 
-ifeq ($(strip $(SMALL)),1)
-  CFLAGS += -Os -ffunction-sections -fdata-sections
+
+
+  CFLAGS += -Os -ffunction-sections -fdata-sections -fmessage-length=0 -fsigned-char
   LDFLAGS += -Wl,--gc-sections --specs=nano.specs
   LDFLAGS += -Wl,--undefined=_reset_vector__,--undefined=InterruptVectors,--undefined=_copy_data_init__,--undefined=_clear_bss_init__,--undefined=_end_of_init__
-endif  #SMALL
+
 
 
 # Build rules ------------------------------------------------------------------

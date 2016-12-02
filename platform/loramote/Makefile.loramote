@@ -3,7 +3,7 @@
 SERIALLPM = 1			# Should be enabled for reliable I/O over USB (LPM sleep instead of STOP)
 VERBOSE = 0		# Verbosity control
 SMALL = 1		# Create small binaries
-REDIRECT_STDIO ?= 1	# Redirect standard I/O to USART/USB
+REDIRECT_STDIO ?= 0	# Redirect standard I/O to USART/USB
 USER_CFLAGS += 
 
 
@@ -34,7 +34,9 @@ ifneq ($(strip $(CONTIKI_WITH_RIME)),1)
   CFLAGS += -DWITH_UIP6=1 -DUIP_CONF_IPV6=1
 endif
 
-CFLAGS += -DUSE_DEBUGGER -DUSE_NO_TIMER -DLOW_POWER_MODE_ENABLE -DUSE_BAND_868 -DUSE_MODEM_LORA -DUSE_USB_CDC -DSERIALLPM=$(SERIALLPM) $(USER_CFLAGS)
+CFLAGS += -DUSE_DEBUGGER -DUSE_BAND_868 -DUSE_MODEM_LORA -DUSE_USB_CDC  -DSERIALLPM=$(SERIALLPM) $(USER_CFLAGS)
+#-DREDIRECT_STDIO
+#-DUSE_NO_TIMER
 
 MODULES += core/net core/net/mac core/net/mac/contikimac
 
