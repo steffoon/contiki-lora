@@ -26,7 +26,8 @@ CONTIKI_CPU_ARCH = \
 		clock.c				\
 		watchdog.c			\
 		lpm-arch.c			\
-		rtimer-arch.c			
+		rtimer-arch.c		\
+		syscalls.c	
 
 ifdef GCC 
   CONTIKI_CPU_PORT = #syscalls.c
