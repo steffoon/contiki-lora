@@ -127,8 +127,6 @@ static uint8_t  *USBD_CDC_GetHSCfgDesc (uint16_t *length);
 
 static uint8_t  *USBD_CDC_GetOtherSpeedCfgDesc (uint16_t *length);
 
-static uint8_t  *USBD_CDC_GetOtherSpeedCfgDesc (uint16_t *length);
-
 uint8_t  *USBD_CDC_GetDeviceQualifierDescriptor (uint16_t *length);
 
 /* USB Standard Device Descriptor */
@@ -156,7 +154,7 @@ __ALIGN_BEGIN static uint8_t USBD_CDC_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 
 
 /* CDC interface class callbacks structure */
-USBD_ClassTypeDef  USBD_CDC = 
+USBD_ClassTypeDef  USBD_CDC =
 {
   USBD_CDC_Init,
   USBD_CDC_DeInit,

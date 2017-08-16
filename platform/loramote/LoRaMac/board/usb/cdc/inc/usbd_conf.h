@@ -63,7 +63,7 @@
 /*---------- -----------*/
 #define USBD_MAX_NUM_CONFIGURATION     1
 /*---------- -----------*/
-#define USBD_MAX_STR_DESC_SIZ     512
+#define USBD_MAX_STR_DESC_SIZ     64
 /*---------- -----------*/
 #define USBD_SUPPORT_USER_STRING     0
 /*---------- -----------*/

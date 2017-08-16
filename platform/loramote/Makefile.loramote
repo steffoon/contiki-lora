@@ -4,8 +4,7 @@ SERIALLPM = 1			# Should be enabled for reliable I/O over USB (LPM sleep instead
 VERBOSE = 0		# Verbosity control
 SMALL = 1		# Create small binaries
 REDIRECT_STDIO ?= 0	# Redirect standard I/O to USART/USB
-USER_CFLAGS += 
-
+USER_CFLAGS +=  
 
 # Target settings -----------------------------------------------------------
 
@@ -34,9 +33,10 @@ ifneq ($(strip $(CONTIKI_WITH_RIME)),1)
   CFLAGS += -DWITH_UIP6=1 -DUIP_CONF_IPV6=1
 endif
 
-CFLAGS += -DUSE_DEBUGGER -DUSE_BAND_868 -DUSE_MODEM_LORA -DUSE_USB_CDC  -DSERIALLPM=$(SERIALLPM) $(USER_CFLAGS)
+CFLAGS += -DUSE_DEBUGGER -DUSE_BAND_868 -DUSE_MODEM_LORA -DUSE_USB_CDC  -DSERIALLPM=$(SERIALLPM) $(USER_CFLAGS) -s
 #-DREDIRECT_STDIO
 #-DUSE_NO_TIMER
+
 
 MODULES += core/net core/net/mac core/net/mac/contikimac
 
@@ -56,10 +56,10 @@ CONTIKI_TARGET_MAIN = contiki-loramote-main.c
 
 FULL_TARGET_DIRS = ${wildcard ${addprefix $(CONTIKI)/platform/loramote/, $(CONTIKI_TARGET_DIRS)}}
 CONTIKI_TARGET_SOURCEFILES = altitude-sensor.c battery-sensor.c button-sensor.c leds-arch.c lora-contiki-interface.c pressure-sensor.c radio-sensor.c serial-line-arch.c slip-arch.c temperature-sensor.c \
-				adc-board.c board.c gpio-board.c i2c-board.c spi-board.c rtc-board.c sx1272-board.c uart-board.c uart-usb-board.c  \
+				adc-board.c board.c gpio-board.c i2c-board.c spi-board.c rtc-board.c sx1272-board.c uart-usb-board.c  \
 				usbd_desc.c usbd_conf.c usbd_desc.c usbd_cdc_if.c usbd_cdc.c usbd_core.c usbd_ctlreq.c usbd_ioreq.c \
 				gpio-ioe.c mpl3115.c sx1509.c sx9500.c \
-				adc.c fifo.c gpio.c i2c.c loratimer.c uart.c \
+				adc.c fifo.c gpio.c i2c.c loratimer.c  \
 				sx1272.c lora-radio-arch.c
 #CONTIKI_TARGET_SOURCEFILES = ${foreach d, $(FULL_TARGET_DIRS), ${subst ${d}/,,${wildcard $(d)/*.c}}}
 

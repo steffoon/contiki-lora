@@ -62,9 +62,10 @@ Gpio_t GpsTx;
 
 Adc_t Adc;
 I2c_t I2c;
-Uart_t Uart1;
 #if defined( USE_USB_CDC )
 Uart_t UartUsb;
+#else
+Uart_t Uart1;
 #endif
 
 /*!
@@ -163,8 +164,8 @@ void BoardInitMcu( void )
         SystemClockConfig( );
 
 #if defined( USE_USB_CDC )
-        UartInit( &UartUsb, UART_USB_CDC, NC, NC );
-        UartConfig( &UartUsb, RX_TX, 115200, UART_8_BIT, UART_1_STOP_BIT, NO_PARITY, NO_FLOW_CTRL );
+        UartUsbInit( &UartUsb, UART_USB_CDC, NC, NC );
+        UartUsbConfig( &UartUsb, RX_TX, 115200, UART_8_BIT, UART_1_STOP_BIT, NO_PARITY, NO_FLOW_CTRL );
 
         DelayMs( 1000 ); // 1000 ms for Usb initialization
 #endif

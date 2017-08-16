@@ -49,7 +49,7 @@ void serial_line_arch_input_callback(UartNotifyId_t id){
   watchdog_periodic();
   if(id == UART_NOTIFY_RX){
     uint8_t ch = 0;
-    while(UartGetChar(&UartUsb, &ch) == 0)
+    while(UartUsbGetChar(&UartUsb, &ch) == 0)
     	serial_line_input_byte(ch);
   }
 }
@@ -64,7 +64,7 @@ PUTCHAR_PROTOTYPE
   watchdog_periodic();
   /* Does not work during hardware interrupts */
   if(UartUsbIsUsbCableConnected()){
-    while(UartPutChar(&UartUsb, ch));
+    while(UartUsbPutChar(&UartUsb, ch));
   }
   return ch;
 }
@@ -73,7 +73,7 @@ PUTSTRING_PROTOTYPE
 {
   watchdog_periodic();
   if(UartUsbIsUsbCableConnected()){
-    while(UartPutBuffer(&UartUsb, (uint8_t*)buffer, size));
+    while(UartUsbPutBuffer(&UartUsb, (uint8_t*)buffer, size));
   }
   return size;
 }
